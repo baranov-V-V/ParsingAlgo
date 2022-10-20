@@ -1,16 +1,37 @@
-set(AUTOMATA_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include)
-set(AUTOMATA_SOURCE_DIR  ${CMAKE_SOURCE_DIR}/src)
+#executable
 
-add_library(Automata)
+if(IS_LIB)
+  target_include_directories(automata
+    PUBLIC
+      ${PROJECT_SOURCE_DIR}/include
+    )
 
-target_include_directories(Automata
-  PUBLIC
-    ${CMAKE_SOURCE_DIR}/include
+  target_sources(automata
+    PUBLIC
+      ${AUTOMATA_INCLUDE_DIR}/automata.hpp
+      ${AUTOMATA_INCLUDE_DIR}/automata_utils.hpp
+      ${AUTOMATA_INCLUDE_DIR}/transition.hpp
+    PRIVATE
+      ${AUTOMATA_SOURCE_DIR}/automata.cpp
+      ${AUTOMATA_SOURCE_DIR}/automata_utils.cpp
+      ${AUTOMATA_SOURCE_DIR}/transition.cpp
   )
 
-target_sources(Automata
-  PUBLIC
-    ${ALGO_INCLUDE_DIR}/example.hpp
-  PRIVATE
-    ${ALGO_SOURCE_DIR}/example.cpp
-)
+else()
+  target_include_directories(Automata
+    PUBLIC
+      ${PROJECT_SOURCE_DIR}/include
+    )
+
+  target_sources(Automata
+    PUBLIC
+      ${AUTOMATA_INCLUDE_DIR}/automata.hpp
+      ${AUTOMATA_INCLUDE_DIR}/automata_utils.hpp
+      ${AUTOMATA_INCLUDE_DIR}/transition.hpp
+    PRIVATE
+      ${AUTOMATA_SOURCE_DIR}/automata.cpp
+      ${AUTOMATA_SOURCE_DIR}/automata_utils.cpp
+      ${AUTOMATA_SOURCE_DIR}/transition.cpp
+      ${AUTOMATA_SOURCE_DIR}/main.cpp
+  )
+endif()
