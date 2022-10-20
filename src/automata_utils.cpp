@@ -39,7 +39,7 @@ Automata AutomataUtils::to_dfa(const Automata& nfa) {
   return Automata(nfa.get_alphabet(), dfa_transitions, 0, dfa_final_states);
 };
 
-Automata AutomataUtils::to_fdfa(const Automata& dfa) {
+Automata AutomataUtils::to_cdfa(const Automata& dfa) {
   vector<Transition> full_dfa_transitions = dfa.get_all_vec_transitions();
 
   const int new_state = dfa.get_states().size();
@@ -80,14 +80,14 @@ Automata AutomataUtils::to_fdfa(const Automata& dfa) {
                   dfa.get_final_states());
 };
 
-Automata AutomataUtils::to_mfdfa(const Automata& fdfa) {
+Automata AutomataUtils::to_mcdfa(const Automata& cdfa) {
   map<int, int> state_group_curr = {};
 
-  for (int state : fdfa.get_states()) {
+  for (int state : cdfa.get_states()) {
     state_group_curr.insert({state, 0});
   }
 
-  for (int state : fdfa.get_final_states()) {
+  for (int state : cdfa.get_final_states()) {
     state_group_curr.at(state) = 1;
   }
 
@@ -95,11 +95,11 @@ Automata AutomataUtils::to_mfdfa(const Automata& fdfa) {
     map<vector<int>, int> eq_classes = {};
     map<int, int> state_group_next = {};
 
-    for (int state : fdfa.get_states()) {
+    for (int state : cdfa.get_states()) {
       vector<int> new_class = {state_group_curr.at(state)};
-      for (char letter : fdfa.get_alphabet()) {
+      for (char letter : cdfa.get_alphabet()) {
         new_class.push_back(
-            state_group_curr.at(get_to_by_letter(fdfa, state, letter)));
+            state_group_curr.at(get_to_by_letter(cdfa, state, letter)));
       }
 
       if (!eq_classes.contains(new_class)) {
@@ -117,7 +117,7 @@ Automata AutomataUtils::to_mfdfa(const Automata& fdfa) {
   }
 
   vector<Transition> mfdfa_transitions = {};
-  for (const Transition& trans : fdfa.get_all_vec_transitions()) {
+  for (const Transition& trans : cdfa.get_all_vec_transitions()) {
     Transition new_trans(state_group_curr.at(trans.from), trans.letter,
                          state_group_curr.at(trans.to));
 
@@ -128,11 +128,11 @@ Automata AutomataUtils::to_mfdfa(const Automata& fdfa) {
   }
 
   set<int> mfdfa_final_states = {};
-  for (int state : fdfa.get_final_states()) {
+  for (int state : cdfa.get_final_states()) {
     mfdfa_final_states.insert(state_group_curr.at(state));
   }
 
-  return Automata(fdfa.get_alphabet(), mfdfa_transitions, fdfa.get_start(),
+  return Automata(cdfa.get_alphabet(), mfdfa_transitions, cdfa.get_start(),
                   mfdfa_final_states);
 };
 

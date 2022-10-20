@@ -20,13 +20,13 @@ class Automata {
  public:
   /**
    * @brief Construct a new Automata object from input stream in following way:
-   * [int] alphabet_count 
-   * [int...] alphabet
-   * [int] start_state
-   * [int] transitions_count
-   * [{int, char, int}...] transitions in form {"from" "letter" "to"}
-   * [int] final_states_count
-   * [int...] final states
+   * (int) alphabet_count 
+   * (int[]) alphabet
+   * (int) start_state
+   * (int) transitions_count
+   * ({in, char, int}[]) transitions in form {"from" "letter" "to"}
+   * (int) final_states_count
+   * (int[]) final states
    *
    * @param in
    */

@@ -86,7 +86,7 @@ TEST(AutomataUtil, ToFullDfa) {
       {0, 'a', 1}, {0, 'b', 2}, {2, 'b', 1}};
 
   Automata dfa(alphabet, transitions, start, final_states);
-  Automata fdfa = AutomataUtils::to_fdfa(dfa);
+  Automata fdfa = AutomataUtils::to_cdfa(dfa);
   fdfa.to_doa("aaa.doa");
 
   const unordered_map<int, multiset<Transition>> correct_transitions = {
@@ -114,7 +114,7 @@ TEST(AutomataUtil, ToMinFullDfa) {
   const set<int> final_states = {2, 3, 4};
 
   Automata fdfa(alphabet, transitions, start, final_states);
-  Automata mfdfa = AutomataUtils::to_mfdfa(fdfa);
+  Automata mfdfa = AutomataUtils::to_mcdfa(fdfa);
 
   const unordered_map<int, multiset<Transition>> correct_transitions = {
       {0, {{0, 'a', 0}, {0, 'b', 1}}},

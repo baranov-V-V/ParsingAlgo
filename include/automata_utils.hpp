@@ -31,7 +31,7 @@ class AutomataUtils {
    * @param dfa
    * @return Automata
    */
-  static Automata to_fdfa(const Automata& dfa);
+  static Automata to_cdfa(const Automata& dfa);
 
   /**
    * @brief Constructs new minimal full DFA from full DFA
@@ -39,7 +39,7 @@ class AutomataUtils {
    * @param fullDfa
    * @return Automata
    */
-  static Automata to_mfdfa(const Automata& fdfa);
+  static Automata to_mcdfa(const Automata& cdfa);
 
  private:
   static MultiState get_to(const MultiState& from, const char letter,
