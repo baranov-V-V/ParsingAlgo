@@ -10,7 +10,7 @@ endif()
 if(IS_LIB)
   message(DUBUG " BUILDING AS LIB")
 else()
-  message(DUBUG " BUILDING FOR TEST AND EXECUTE")
+  message(DUBUG " BUILDING FOR TEST OR EXECUTE")
 endif()
 
 if(NOT IS_LIB)
@@ -25,18 +25,18 @@ set(CMAKE_POSITION_INDEPENDENT_CODE)
 
 set(AUTOMATA_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 set(AUTOMATA_SOURCE_DIR  ${PROJECT_SOURCE_DIR}/src)
+set(AUTOMATA_TEST_DIR    ${PROJECT_SOURCE_DIR}/test)
 
 if(IS_LIB)
   add_library(automata)
 else()
-  add_executable(Automata)
+  add_executable(main)
 endif()
 
 if(NOT IS_LIB)
+  message(DUBUG " ENABLE TESTS")
+
   enable_testing()
-endif()
-
-if(NOT IS_LIB)
   add_subdirectory(third_party)
   add_subdirectory(test)
 endif()

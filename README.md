@@ -1,7 +1,9 @@
 # Automata
 
 This is a library for storing and making operations with automatas (https://en.wikipedia.org/wiki/Automata_theory)\
-You can add this library to your project via Cmake
+You can add this library to your project via Cmake or write in ```src/main.cpp``` as a sandbox\
+To compile sandbox and tests use ```build.sh```\
+To run test after compiling use ```run_tests.sh```
 
 ## Main classes
 
@@ -16,7 +18,7 @@ class AutomataUtils;
 ```
 
 ## Creation of Automata
-It can be constucted from and input stream like std::sin or std::istringstream
+It can be constucted from an input stream like std::sin or std::istringstream
 ```C++
 Automata(basic_istream<char>& in);
 ```

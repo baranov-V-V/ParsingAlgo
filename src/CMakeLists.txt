@@ -18,12 +18,12 @@ if(IS_LIB)
   )
 
 else()
-  target_include_directories(Automata
+  target_include_directories(main
     PUBLIC
       ${PROJECT_SOURCE_DIR}/include
     )
 
-  target_sources(Automata
+  target_sources(main
     PUBLIC
       ${AUTOMATA_INCLUDE_DIR}/automata.hpp
       ${AUTOMATA_INCLUDE_DIR}/automata_utils.hpp
