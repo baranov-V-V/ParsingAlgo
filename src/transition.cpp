@@ -3,6 +3,9 @@
 Transition::Transition(int from, char letter, int to)
     : from(from), to(to), letter(letter) {}
 
+Transition::Transition(const Transition& transition)
+    : from(transition.from), to(transition.to), letter(transition.letter) {}
+
 bool Transition::operator==(const Transition& rhs) const {
   return (from == rhs.from) && (to == rhs.to) && (letter == rhs.letter);
 }

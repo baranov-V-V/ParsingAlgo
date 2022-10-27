@@ -7,6 +7,7 @@ struct Transition {
   const char letter;
 
   Transition(int from, char letter, int to);
+  Transition(const Transition& transition);
 
   bool operator==(const Transition& rhs) const;
   bool operator<(const Transition& rhs) const;
