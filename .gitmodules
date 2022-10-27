@@ -1,9 +1,9 @@
 
 
 [submodule "automata/third_party/googletest"]
-	path = automata/third_party/googletest
-	url = https://github.com/google/googletest.git
+  path = automata/third_party/googletest
+  url = https://github.com/google/googletest.git
 
 [submodule "automata/third_party/cmake-scripts"]
-	path = automata/third_party/cmake-scripts
+  path = automata/third_party/cmake-scripts
   url = https://github.com/StableCoder/cmake-scripts.git
