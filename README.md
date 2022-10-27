@@ -4,7 +4,8 @@ This is a library for storing and making operations with automatas (https://en.w
 You can add this library to your project via Cmake or write in ```src/main.cpp``` as a sandbox\
 If you want to run test and code coverage before compilation run ```install.sh```\
 To compile sandbox and tests use ```build.sh```\
-To run test after compiling use ```run_tests.sh```
+To run test after compiling use ```run_tests.sh```\
+All code coverage files are stored in ```build/ccov```
 
 ## Main classes
 
