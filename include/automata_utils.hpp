@@ -23,7 +23,7 @@ class AutomataUtils {
    * @param nfa
    * @return Automata
    */
-  static Automata to_dfa(const Automata& nfa);
+  static Automata ToDfa(const Automata& nfa);
 
   /**
    * @brief Constructs new full DFA from DFA
@@ -31,7 +31,7 @@ class AutomataUtils {
    * @param dfa
    * @return Automata
    */
-  static Automata to_cdfa(const Automata& dfa);
+  static Automata ToCDfa(const Automata& dfa);
 
   /**
    * @brief Constructs new minimal full DFA from full DFA
@@ -39,13 +39,13 @@ class AutomataUtils {
    * @param fullDfa
    * @return Automata
    */
-  static Automata to_mcdfa(const Automata& cdfa);
+  static Automata ToMCDfa(const Automata& cdfa);
 
  private:
-  static MultiState get_to(const MultiState& from, const char letter,
+  static MultiState GetToMultiState(const MultiState& from, const char letter,
                            const Automata& automata);
 
-  static bool is_full(map<int, set<char>>& letters_to_full_states);
+  static bool IsFull(map<int, set<char>>& letters_to_full_states);
 
-  static int get_to_by_letter(Automata automata, int from, char letter);
+  static int GetToByLetter(Automata automata, int from, char letter);
 };

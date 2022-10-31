@@ -42,15 +42,15 @@ TEST(ConstructAutomata, IStream) {
 
   Automata automata(ss);
 
-  ASSERT_EQ(automata.get_alphabet(), std::set<char>({'a', 'b', 'c'}));
-  ASSERT_EQ(automata.get_states(), std::set<int>({0, 2, 3, 4}));
-  ASSERT_EQ(automata.get_start(), 0);
-  ASSERT_EQ(automata.get_all_vec_transitions().size(), 5);
+  ASSERT_EQ(automata.GetAlphabet(), std::set<char>({'a', 'b', 'c'}));
+  ASSERT_EQ(automata.GetStates(), std::set<int>({0, 2, 3, 4}));
+  ASSERT_EQ(automata.GetStart(), 0);
+  ASSERT_EQ(automata.GetAllVecTransitions().size(), 5);
   ASSERT_EQ(
-      automata.get_all_vec_transitions(),
+      automata.GetAllVecTransitions(),
       std::vector<Transition>(
           {{0, 'a', 2}, {0, 'a', 3}, {0, 'b', 2}, {2, 'b', 4}, {0, 'a', 2}}));
-  ASSERT_EQ(automata.get_final_states(), std::set<int>({2, 4}));
+  ASSERT_EQ(automata.GetFinalStates(), std::set<int>({2, 4}));
 }
 
 TEST(AutomataUtil, ToDfa) {
@@ -62,7 +62,7 @@ TEST(AutomataUtil, ToDfa) {
                                           {1, 'b', 1}};
 
   Automata nfa(alphabet, transitions, start, final_states);
-  Automata dfa = AutomataUtils::to_dfa(nfa);
+  Automata dfa = AutomataUtils::ToDfa(nfa);
 
   const unordered_map<int, multiset<Transition>> correct_transitions = {
       {0, {{0, 'a', 1}, {0, 'b', 2}}},
@@ -72,10 +72,10 @@ TEST(AutomataUtil, ToDfa) {
   };
 
   ASSERT_TRUE(
-      is_eq_transitions(correct_transitions, dfa.get_all_set_transitions()));
-  ASSERT_EQ(nfa.get_alphabet(), dfa.get_alphabet());
-  ASSERT_EQ(nfa.get_start(), 0);
-  ASSERT_EQ(nfa.get_final_states(), std::set<int>({0, 1}));
+      is_eq_transitions(correct_transitions, dfa.GetAllSetTransitions()));
+  ASSERT_EQ(nfa.GetAlphabet(), dfa.GetAlphabet());
+  ASSERT_EQ(nfa.GetStart(), 0);
+  ASSERT_EQ(nfa.GetFinalStates(), std::set<int>({0, 1}));
 }
 
 TEST(AutomataUtil, ToFullDfa) {
@@ -86,8 +86,8 @@ TEST(AutomataUtil, ToFullDfa) {
       {0, 'a', 1}, {0, 'b', 2}, {2, 'b', 1}};
 
   Automata dfa(alphabet, transitions, start, final_states);
-  Automata fdfa = AutomataUtils::to_cdfa(dfa);
-  fdfa.to_doa("aaa.doa");
+  Automata fdfa = AutomataUtils::ToCDfa(dfa);
+  fdfa.ToDoa("aaa.doa");
 
   const unordered_map<int, multiset<Transition>> correct_transitions = {
       {0, {{0, 'a', 1}, {0, 'b', 2}}},
@@ -97,10 +97,10 @@ TEST(AutomataUtil, ToFullDfa) {
   };
 
   ASSERT_TRUE(
-      is_eq_transitions(correct_transitions, fdfa.get_all_set_transitions()));
-  ASSERT_EQ(fdfa.get_alphabet(), dfa.get_alphabet());
-  ASSERT_EQ(fdfa.get_start(), 0);
-  ASSERT_EQ(fdfa.get_final_states(), std::set<int>({1, 2}));
+      is_eq_transitions(correct_transitions, fdfa.GetAllSetTransitions()));
+  ASSERT_EQ(fdfa.GetAlphabet(), dfa.GetAlphabet());
+  ASSERT_EQ(fdfa.GetStart(), 0);
+  ASSERT_EQ(fdfa.GetFinalStates(), std::set<int>({1, 2}));
 }
 
 TEST(AutomataUtil, ToMinFullDfa) {
@@ -114,7 +114,7 @@ TEST(AutomataUtil, ToMinFullDfa) {
   const set<int> final_states = {2, 3, 4};
 
   Automata fdfa(alphabet, transitions, start, final_states);
-  Automata mfdfa = AutomataUtils::to_mcdfa(fdfa);
+  Automata mfdfa = AutomataUtils::ToMCDfa(fdfa);
 
   const unordered_map<int, multiset<Transition>> correct_transitions = {
       {0, {{0, 'a', 0}, {0, 'b', 1}}},
@@ -122,8 +122,8 @@ TEST(AutomataUtil, ToMinFullDfa) {
       {2, {{2, 'a', 2}, {2, 'b', 2}}}};
 
   ASSERT_TRUE(
-      is_eq_transitions(correct_transitions, mfdfa.get_all_set_transitions()));
-  ASSERT_EQ(mfdfa.get_alphabet(), alphabet);
-  ASSERT_EQ(mfdfa.get_start(), 0);
-  ASSERT_EQ(mfdfa.get_final_states(), std::set<int>({1}));
+      is_eq_transitions(correct_transitions, mfdfa.GetAllSetTransitions()));
+  ASSERT_EQ(mfdfa.GetAlphabet(), alphabet);
+  ASSERT_EQ(mfdfa.GetStart(), 0);
+  ASSERT_EQ(mfdfa.GetFinalStates(), std::set<int>({1}));
 }

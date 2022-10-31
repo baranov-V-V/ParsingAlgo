@@ -35,22 +35,22 @@ class Automata {
   Automata(const set<char>& alphabet, const vector<Transition>& transitions,
            const int start, const set<int>& final_states);
 
-  const set<char>& get_alphabet() const;
+  const set<char>& GetAlphabet() const;
 
-  const vector<Transition>& get_all_vec_transitions() const;
+  const vector<Transition>& GetAllVecTransitions() const;
 
-  const multiset<Transition>& get_transitions(const int state) const;
+  const multiset<Transition>& GetTransitions(const int state) const;
 
-  const unordered_map<int, multiset<Transition>>& get_all_set_transitions()
+  const unordered_map<int, multiset<Transition>>& GetAllSetTransitions()
       const;
 
-  const int get_start() const;
+  const int GetStart() const;
 
-  const set<int>& get_final_states() const;
+  const set<int>& GetFinalStates() const;
 
-  const set<int>& get_states() const;
+  const set<int>& GetStates() const;
 
-  void to_doa(const char* filename);
+  void ToDoa(const char* filename);
 
  private:
   int start_ = 0;
@@ -61,14 +61,14 @@ class Automata {
   set<int> final_states_;
   unordered_map<int, multiset<Transition>> transitions_per_state_;
 
-  void read_alphabet(basic_istream<char>& in);
-  void read_start_state(basic_istream<char>& in);
-  void read_transitions(basic_istream<char>& in);
-  void read_final_states(basic_istream<char>& in);
+  void ReadAlphabet(basic_istream<char>& in);
+  void ReadStartState(basic_istream<char>& in);
+  void ReadTransitions(basic_istream<char>& in);
+  void ReadFinalStates(basic_istream<char>& in);
 
-  void init_states();
+  void InitStates();
 
-  void init_transitions_per_state();
+  void InitTransitionsPerState();
 };
 
 #endif  // AUTOMATA_AUTOMATA_H_

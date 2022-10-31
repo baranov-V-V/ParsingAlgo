@@ -1,13 +1,13 @@
 #include "automata_utils.hpp"
 
-Automata AutomataUtils::to_dfa(const Automata& nfa) {
+Automata AutomataUtils::ToDfa(const Automata& nfa) {
   vector<Transition> dfa_transitions = {};
   MultiState dfa_final_states = {};
-  set<MultiState> dfa_states = {{nfa.get_start()}};
-  map<MultiState, int> dfa_states_ids = {{set<int>({nfa.get_start()}), 0}};
+  set<MultiState> dfa_states = {{nfa.GetStart()}};
+  map<MultiState, int> dfa_states_ids = {{set<int>({nfa.GetStart()}), 0}};
 
   queue<MultiState> queue = {};
-  queue.push({nfa.get_start()});
+  queue.push({nfa.GetStart()});
 
   while (!queue.empty()) {
     const MultiState curr_state = queue.front();
@@ -15,8 +15,8 @@ Automata AutomataUtils::to_dfa(const Automata& nfa) {
 
     int curr_state_id = dfa_states_ids.at(curr_state);
 
-    for (char letter : nfa.get_alphabet()) {
-      MultiState new_state = get_to(curr_state, letter, nfa);
+    for (char letter : nfa.GetAlphabet()) {
+      MultiState new_state = GetToMultiState(curr_state, letter, nfa);
 
       if (!dfa_states.contains(new_state)) {
         dfa_states_ids.insert({new_state, dfa_states.size()});
@@ -29,32 +29,32 @@ Automata AutomataUtils::to_dfa(const Automata& nfa) {
     }
 
     for (int state : curr_state) {
-      if (nfa.get_final_states().contains(state)) {
+      if (nfa.GetFinalStates().contains(state)) {
         dfa_final_states.insert(curr_state_id);
         break;
       }
     }
   }
 
-  return Automata(nfa.get_alphabet(), dfa_transitions, 0, dfa_final_states);
+  return Automata(nfa.GetAlphabet(), dfa_transitions, 0, dfa_final_states);
 };
 
-Automata AutomataUtils::to_cdfa(const Automata& dfa) {
-  vector<Transition> full_dfa_transitions = dfa.get_all_vec_transitions();
+Automata AutomataUtils::ToCDfa(const Automata& dfa) {
+  vector<Transition> full_dfa_transitions = dfa.GetAllVecTransitions();
 
-  const int new_state = dfa.get_states().size();
+  const int new_state = dfa.GetStates().size();
   map<int, map<char, bool>> needed_transitions = {};
 
   // init map
-  for (int state : dfa.get_states()) {
+  for (int state : dfa.GetStates()) {
     needed_transitions.insert({state, map<char, bool>()});
-    for (char letter : dfa.get_alphabet()) {
+    for (char letter : dfa.GetAlphabet()) {
       needed_transitions.at(state).insert(std::make_pair(letter, true));
     }
   }
 
   // mark map
-  for (const Transition& trans : dfa.get_all_vec_transitions()) {
+  for (const Transition& trans : dfa.GetAllVecTransitions()) {
     needed_transitions.at(trans.from).at(trans.letter) = false;
   }
 
@@ -71,23 +71,23 @@ Automata AutomataUtils::to_cdfa(const Automata& dfa) {
   }
 
   if (!is_full) {
-    for (char letter : dfa.get_alphabet()) {
+    for (char letter : dfa.GetAlphabet()) {
       full_dfa_transitions.push_back(Transition(new_state, letter, new_state));
     }
   }
 
-  return Automata(dfa.get_alphabet(), full_dfa_transitions, dfa.get_start(),
-                  dfa.get_final_states());
+  return Automata(dfa.GetAlphabet(), full_dfa_transitions, dfa.GetStart(),
+                  dfa.GetFinalStates());
 };
 
-Automata AutomataUtils::to_mcdfa(const Automata& cdfa) {
+Automata AutomataUtils::ToMCDfa(const Automata& cdfa) {
   map<int, int> state_group_curr = {};
 
-  for (int state : cdfa.get_states()) {
+  for (int state : cdfa.GetStates()) {
     state_group_curr.insert({state, 0});
   }
 
-  for (int state : cdfa.get_final_states()) {
+  for (int state : cdfa.GetFinalStates()) {
     state_group_curr.at(state) = 1;
   }
 
@@ -95,11 +95,11 @@ Automata AutomataUtils::to_mcdfa(const Automata& cdfa) {
     map<vector<int>, int> eq_classes = {};
     map<int, int> state_group_next = {};
 
-    for (int state : cdfa.get_states()) {
+    for (int state : cdfa.GetStates()) {
       vector<int> new_class = {state_group_curr.at(state)};
-      for (char letter : cdfa.get_alphabet()) {
+      for (char letter : cdfa.GetAlphabet()) {
         new_class.push_back(
-            state_group_curr.at(get_to_by_letter(cdfa, state, letter)));
+            state_group_curr.at(GetToByLetter(cdfa, state, letter)));
       }
 
       if (!eq_classes.contains(new_class)) {
@@ -117,7 +117,7 @@ Automata AutomataUtils::to_mcdfa(const Automata& cdfa) {
   }
 
   vector<Transition> mfdfa_transitions = {};
-  for (const Transition& trans : cdfa.get_all_vec_transitions()) {
+  for (const Transition& trans : cdfa.GetAllVecTransitions()) {
     Transition new_trans(state_group_curr.at(trans.from), trans.letter,
                          state_group_curr.at(trans.to));
 
@@ -128,20 +128,20 @@ Automata AutomataUtils::to_mcdfa(const Automata& cdfa) {
   }
 
   set<int> mfdfa_final_states = {};
-  for (int state : cdfa.get_final_states()) {
+  for (int state : cdfa.GetFinalStates()) {
     mfdfa_final_states.insert(state_group_curr.at(state));
   }
 
-  return Automata(cdfa.get_alphabet(), mfdfa_transitions, cdfa.get_start(),
+  return Automata(cdfa.GetAlphabet(), mfdfa_transitions, cdfa.GetStart(),
                   mfdfa_final_states);
 };
 
-AutomataUtils::MultiState AutomataUtils::get_to(const MultiState& from,
+AutomataUtils::MultiState AutomataUtils::GetToMultiState(const MultiState& from,
                                                 const char letter,
                                                 const Automata& automata) {
   MultiState to = {};
 
-  for (const Transition& trans : automata.get_all_vec_transitions()) {
+  for (const Transition& trans : automata.GetAllVecTransitions()) {
     if (trans.letter == letter && from.contains(trans.from)) {
       to.insert(trans.to);
     }
@@ -150,8 +150,8 @@ AutomataUtils::MultiState AutomataUtils::get_to(const MultiState& from,
   return to;
 }
 
-int AutomataUtils::get_to_by_letter(Automata automata, int from, char letter) {
-  for (const Transition& trans : automata.get_transitions(from)) {
+int AutomataUtils::GetToByLetter(Automata automata, int from, char letter) {
+  for (const Transition& trans : automata.GetTransitions(from)) {
     if (trans.letter == letter) {
       return trans.to;
     }
