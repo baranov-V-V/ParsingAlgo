@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(AUTOMATA)
+project(PARSING_ALGORITHMS)
 
 set(IS_LIB "YES")
 if(PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
@@ -8,9 +8,9 @@ if(PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 endif()
 
 if(IS_LIB)
-  message(DUBUG " BUILDING AS LIB")
+  message(DUBUG: " BUILDING AS LIB")
 else()
-  message(DUBUG " BUILDING FOR TEST OR EXECUTE")
+  message(DUBUG: " BUILDING FOR TEST OR EXECUTE")
 endif()
 
 if(NOT IS_LIB)
@@ -23,12 +23,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_POSITION_INDEPENDENT_CODE)
 
-set(AUTOMATA_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
-set(AUTOMATA_SOURCE_DIR  ${PROJECT_SOURCE_DIR}/src)
-set(AUTOMATA_TEST_DIR    ${PROJECT_SOURCE_DIR}/test)
+set(ALGO_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
+set(ALGO_SOURCE_DIR  ${PROJECT_SOURCE_DIR}/src)
+set(ALGO_TEST_DIR    ${PROJECT_SOURCE_DIR}/test)
 
 if(IS_LIB)
-  add_library(automata)
+  add_library(parsing_algo)
 else()
   add_executable(main)
 endif()

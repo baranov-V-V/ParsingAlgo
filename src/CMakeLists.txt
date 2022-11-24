@@ -1,37 +1,30 @@
 #executable
 
 if(IS_LIB)
-  target_include_directories(automata
+  target_include_directories(parsing_algo
     PUBLIC
-      ${PROJECT_SOURCE_DIR}/include
+      ${ALGO_INCLUDE_DIR}
     )
 
-  target_sources(automata
-    PUBLIC
-      ${AUTOMATA_INCLUDE_DIR}/automata.hpp
-      ${AUTOMATA_INCLUDE_DIR}/automata_utils.hpp
-      ${AUTOMATA_INCLUDE_DIR}/transition.hpp
+  target_sources(parsing_algo
     PRIVATE
-      ${AUTOMATA_SOURCE_DIR}/automata.cpp
-      ${AUTOMATA_SOURCE_DIR}/automata_utils.cpp
-      ${AUTOMATA_SOURCE_DIR}/transition.cpp
+      ${ALGO_SOURCE_DIR}/rule.cpp
+      ${ALGO_SOURCE_DIR}/grammar.cpp
+      ${ALGO_SOURCE_DIR}/algorithms.cpp
   )
 
 else()
   target_include_directories(main
     PUBLIC
-      ${PROJECT_SOURCE_DIR}/include
+      ${ALGO_INCLUDE_DIR}
     )
 
   target_sources(main
-    PUBLIC
-      ${AUTOMATA_INCLUDE_DIR}/automata.hpp
-      ${AUTOMATA_INCLUDE_DIR}/automata_utils.hpp
-      ${AUTOMATA_INCLUDE_DIR}/transition.hpp
     PRIVATE
-      ${AUTOMATA_SOURCE_DIR}/automata.cpp
-      ${AUTOMATA_SOURCE_DIR}/automata_utils.cpp
-      ${AUTOMATA_SOURCE_DIR}/transition.cpp
-      ${AUTOMATA_SOURCE_DIR}/main.cpp
+      ${ALGO_SOURCE_DIR}/main.cpp
+      ${ALGO_SOURCE_DIR}/algorithms.cpp
+      ${ALGO_SOURCE_DIR}/rule.cpp
+      ${ALGO_SOURCE_DIR}/grammar.cpp
   )
+
 endif()
