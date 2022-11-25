@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-11-25 10:10:10</td>
+            <td class="headerValue">2022-11-25 16:19:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">1</td>
@@ -1625,8 +1625,8 @@
 <a name="1563"><span class="lineNum">    1563 </span>            : // Returns a newly created InternalRunDeathTestFlag object with fields</a>
 <a name="1564"><span class="lineNum">    1564 </span>            : // initialized from the GTEST_FLAG(internal_run_death_test) flag if</a>
 <a name="1565"><span class="lineNum">    1565 </span>            : // the flag is specified; otherwise returns NULL.</a>
-<a name="1566"><span class="lineNum">    1566 </span><span class="lineCov">          1 : InternalRunDeathTestFlag* ParseInternalRunDeathTestFlag() {</span></a>
-<a name="1567"><span class="lineNum">    1567 </span><span class="lineCov">          1 :   if (GTEST_FLAG_GET(internal_run_death_test) == &quot;&quot;) return nullptr;</span></a>
+<a name="1566"><span class="lineNum">    1566 </span><span class="lineCov">          2 : InternalRunDeathTestFlag* ParseInternalRunDeathTestFlag() {</span></a>
+<a name="1567"><span class="lineNum">    1567 </span><span class="lineCov">          2 :   if (GTEST_FLAG_GET(internal_run_death_test) == &quot;&quot;) return nullptr;</span></a>
 <a name="1568"><span class="lineNum">    1568 </span>            : </a>
 <a name="1569"><span class="lineNum">    1569 </span>            :   // GTEST_HAS_DEATH_TEST implies that we have ::std::string, so we</a>
 <a name="1570"><span class="lineNum">    1570 </span>            :   // can use it here.</a>

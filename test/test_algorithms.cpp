@@ -11,7 +11,7 @@ using parsing::Rule;
 using std::string;
 using std::vector;
 
-TEST(Earley, simple1) {
+TEST(Earley, simple) {
   string str_rules = "NP   :  Det Nom                                   ;"
                      "Nom  :  AP Nom                                    ;"
                      "AP   :  Adv A                                     ;"
@@ -23,9 +23,24 @@ TEST(Earley, simple1) {
 
   Grammar grammar("NP", str_rules);
 
-  grammar.Print(std::cout);
-
-  //parsing::CYK(grammar, vector<string>({"a", "very", "heavy", "orange", "book"}));
+  //grammar.Print(std::cout);
 
   ASSERT_EQ(parsing::Earley(grammar, vector<string>({"a", "very", "heavy", "orange", "book"})), true);
+}
+
+TEST(Earley, ariphmetic) {
+  string str_rules = "S : 'x'       ;"
+                     "S : 'y'       ;"
+                     "S : 'z'       ;"
+                     "S : S '+' S   ;"
+                     "S : S '-' S   ;"
+                     "S : S '*' S   ;"
+                     "S : S '/' S   ;"
+                     "S : '(' S ')' ;";
+
+  Grammar grammar("S", str_rules);
+
+  //grammar.Print(std::cout);
+
+  ASSERT_EQ(parsing::Earley(grammar, vector<string>({"(", "x", "+", "y", ")", "*", "x", "-", "z", "*", "y", "/", "(", "x", "+", "x", ")"})), true);
 }

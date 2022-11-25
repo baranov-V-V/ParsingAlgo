@@ -12,6 +12,8 @@ Grammar::Grammar(basic_istream<char>& is) {
   std::string str_grammar(it, end);
 
   ConstructVecRules(str_grammar);
+  AddToMap(rules_);
+  InitHelperSets();
 }
 
 Grammar::Grammar(const string& start, const string& str_grammar) : start_(start) {

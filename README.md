@@ -32,14 +32,23 @@ terminals should always be in 'single-quotes'
 Examples:
 
 ```
-NP   :  Det Nom                                   ;
-Nom  :  AP Nom                                    ;
-AP   :  Adv A                                     ;
-Det  :  'a' | 'an'                                ;
-Adv  :  'very' | 'extremely'                      ;
-AP   :  'heavy' | 'orange' | 'tall'               ;
-A    :  'heavy' | 'orange' | 'tall' | 'muscular'  ;
-Nom  :  'book' | 'orange' | 'man'                 ;
+NP   :  Det Nom;
+Nom  :  AP Nom;
+AP   :  Adv A;
+Det  :  'a' | 'an';
+Adv  :  'very' | 'extremely';
+AP   :  'heavy' | 'orange' | 'tall';
+A    :  'heavy' | 'orange' | 'tall' | 'muscular';
+Nom  :  'book' | 'orange' | 'man';
+
+S : 'x';
+S : 'y';
+S : 'z';
+S : S '+' S;
+S : S '-' S;
+S : S '*' S;
+S : S '/' S;
+S : '(' S ')';
 ```
 
 Grammar can be made from it's compontents:

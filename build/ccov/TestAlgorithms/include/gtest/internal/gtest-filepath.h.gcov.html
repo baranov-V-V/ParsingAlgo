@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-11-25 10:10:10</td>
+            <td class="headerValue">2022-11-25 16:19:55</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">4</td>
@@ -125,19 +125,19 @@
 <a name="63"><span class="lineNum">      63 </span>            : </a>
 <a name="64"><span class="lineNum">      64 </span>            : class GTEST_API_ FilePath {</a>
 <a name="65"><span class="lineNum">      65 </span>            :  public:</a>
-<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          1 :   FilePath() : pathname_(&quot;&quot;) {}</span></a>
+<a name="66"><span class="lineNum">      66 </span><span class="lineCov">          2 :   FilePath() : pathname_(&quot;&quot;) {}</span></a>
 <a name="67"><span class="lineNum">      67 </span><span class="lineNoCov">          0 :   FilePath(const FilePath&amp; rhs) : pathname_(rhs.pathname_) {}</span></a>
 <a name="68"><span class="lineNum">      68 </span>            : </a>
-<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          1 :   explicit FilePath(const std::string&amp; pathname) : pathname_(pathname) {</span></a>
-<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          1 :     Normalize();</span></a>
-<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          1 :   }</span></a>
+<a name="69"><span class="lineNum">      69 </span><span class="lineCov">          2 :   explicit FilePath(const std::string&amp; pathname) : pathname_(pathname) {</span></a>
+<a name="70"><span class="lineNum">      70 </span><span class="lineCov">          2 :     Normalize();</span></a>
+<a name="71"><span class="lineNum">      71 </span><span class="lineCov">          2 :   }</span></a>
 <a name="72"><span class="lineNum">      72 </span>            : </a>
 <a name="73"><span class="lineNum">      73 </span><span class="lineNoCov">          0 :   FilePath&amp; operator=(const FilePath&amp; rhs) {</span></a>
 <a name="74"><span class="lineNum">      74 </span><span class="lineNoCov">          0 :     Set(rhs);</span></a>
 <a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 :     return *this;</span></a>
 <a name="76"><span class="lineNum">      76 </span>            :   }</a>
 <a name="77"><span class="lineNum">      77 </span>            : </a>
-<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          1 :   void Set(const FilePath&amp; rhs) { pathname_ = rhs.pathname_; }</span></a>
+<a name="78"><span class="lineNum">      78 </span><span class="lineCov">          2 :   void Set(const FilePath&amp; rhs) { pathname_ = rhs.pathname_; }</span></a>
 <a name="79"><span class="lineNum">      79 </span>            : </a>
 <a name="80"><span class="lineNum">      80 </span><span class="lineNoCov">          0 :   const std::string&amp; string() const { return pathname_; }</span></a>
 <a name="81"><span class="lineNum">      81 </span><span class="lineNoCov">          0 :   const char* c_str() const { return pathname_.c_str(); }</span></a>
@@ -172,7 +172,7 @@
 <a name="110"><span class="lineNum">     110 </span>            :                                          const char* extension);</a>
 <a name="111"><span class="lineNum">     111 </span>            : </a>
 <a name="112"><span class="lineNum">     112 </span>            :   // Returns true if and only if the path is &quot;&quot;.</a>
-<a name="113"><span class="lineNum">     113 </span><span class="lineCov">          6 :   bool IsEmpty() const { return pathname_.empty(); }</span></a>
+<a name="113"><span class="lineNum">     113 </span><span class="lineCov">         10 :   bool IsEmpty() const { return pathname_.empty(); }</span></a>
 <a name="114"><span class="lineNum">     114 </span>            : </a>
 <a name="115"><span class="lineNum">     115 </span>            :   // If input name has a trailing separator character, removes it and returns</a>
 <a name="116"><span class="lineNum">     116 </span>            :   // the name, otherwise return the name string unmodified.</a>
