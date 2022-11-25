@@ -101,6 +101,7 @@ class Rule {
   static Token GetTerm(ParseString& parse_string);
 
   static Token GetStr(ParseString& parse_string, bool is_term);
+  static Token GetQuotedStr(ParseString& parse_string, bool is_term);
 
   static Token GetWord(ParseString& parse_string);
 

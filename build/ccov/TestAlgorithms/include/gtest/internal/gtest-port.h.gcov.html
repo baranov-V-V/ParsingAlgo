@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-11-25 01:20:42</td>
+            <td class="headerValue">2022-11-25 10:10:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">21</td>
@@ -1738,11 +1738,11 @@
 <a name="1676"><span class="lineNum">    1676 </span>            : // shares its API with MutexBase otherwise.</a>
 <a name="1677"><span class="lineNum">    1677 </span>            : class Mutex : public MutexBase {</a>
 <a name="1678"><span class="lineNum">    1678 </span>            :  public:</a>
-<a name="1679"><span class="lineNum">    1679 </span><span class="lineCov">          5 :   Mutex() {</span></a>
-<a name="1680"><span class="lineNum">    1680 </span><span class="lineCov">          5 :     GTEST_CHECK_POSIX_SUCCESS_(pthread_mutex_init(&amp;mutex_, nullptr));</span></a>
-<a name="1681"><span class="lineNum">    1681 </span><span class="lineCov">          5 :     has_owner_ = false;</span></a>
-<a name="1682"><span class="lineNum">    1682 </span><span class="lineCov">          5 :   }</span></a>
-<a name="1683"><span class="lineNum">    1683 </span><span class="lineCov">          5 :   ~Mutex() { GTEST_CHECK_POSIX_SUCCESS_(pthread_mutex_destroy(&amp;mutex_)); }</span></a>
+<a name="1679"><span class="lineNum">    1679 </span><span class="lineCov">          9 :   Mutex() {</span></a>
+<a name="1680"><span class="lineNum">    1680 </span><span class="lineCov">          9 :     GTEST_CHECK_POSIX_SUCCESS_(pthread_mutex_init(&amp;mutex_, nullptr));</span></a>
+<a name="1681"><span class="lineNum">    1681 </span><span class="lineCov">          9 :     has_owner_ = false;</span></a>
+<a name="1682"><span class="lineNum">    1682 </span><span class="lineCov">          9 :   }</span></a>
+<a name="1683"><span class="lineNum">    1683 </span><span class="lineCov">          9 :   ~Mutex() { GTEST_CHECK_POSIX_SUCCESS_(pthread_mutex_destroy(&amp;mutex_)); }</span></a>
 <a name="1684"><span class="lineNum">    1684 </span>            : </a>
 <a name="1685"><span class="lineNum">    1685 </span>            :  private:</a>
 <a name="1686"><span class="lineNum">    1686 </span>            :   Mutex(const Mutex&amp;) = delete;</a>

@@ -50,6 +50,7 @@ target_sources(TestAlgorithms
     ${ALGO_SOURCE_DIR}/rule.cpp
     ${ALGO_SOURCE_DIR}/grammar.cpp
     ${ALGO_SOURCE_DIR}/algorithms.cpp
+    ${ALGO_SOURCE_DIR}/situation.cpp
   )
 target_link_libraries(TestAlgorithms
   PUBLIC

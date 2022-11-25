@@ -101,6 +101,25 @@ Token Rule::GetStr(ParseString& parse_string, bool is_term) {
   return token;
 }
 
+Token Rule::GetQuotedStr(ParseString& parse_string, bool is_term) {
+  int start_pos = parse_string.pos;
+  parse_string.SkipSpaces();
+  
+  Token token("", is_term);
+  
+  while (parse_string.HasCurr() && parse_string.Curr() != '\'') {
+    token.data->push_back(parse_string.Curr());
+    parse_string.Next();
+  }
+  
+  if (!token.is_filled()) {
+    parse_string.pos = start_pos;
+    throw FailedParsingExeption();
+  }
+
+  return token;
+}
+
 Token Rule::GetNonTerm(ParseString& parse_string) {
   return GetStr(parse_string, false);
 }
@@ -114,9 +133,8 @@ Token Rule::GetTerm(ParseString& parse_string) {
 
   if (parse_string.HasCurr() && parse_string.Curr() == '\'') {
     parse_string.Next();
-    token = GetStr(parse_string, true);
+    token = GetQuotedStr(parse_string, true);
 
-    parse_string.SkipSpaces();
     if (parse_string.HasCurr() && parse_string.Curr() != '\'') {
       parse_string.pos = start_pos;
       throw FailedParsingExeption();

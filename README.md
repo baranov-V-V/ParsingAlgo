@@ -63,5 +63,5 @@ Main functions for operations with Grammar are is
 
 ### Checks if sentence belongs to grammar
 ```C++
-bool CYK(const Grammar& grammar, vector<string> sentence);
+bool Earley(const Grammar& grammar, vector<string> sentence);
 ```

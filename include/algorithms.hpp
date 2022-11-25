@@ -8,25 +8,38 @@
 
 #include <rule.hpp>
 #include <grammar.hpp>
+#include <situation.hpp>
 
 using std::vector;
 using std::string;
 using std::unordered_map;
 
 namespace parsing {
-  
-class CYKTable {
+
+typedef set<Situation> SituationList;
+
+class SituationLists {
  public:
-  CYKTable(const Grammar& grammar, int sentence_size);
+  SituationLists(size_t size);
 
-  bool Get(const string& nonterm, int i, int j);
+  const SituationList& GetList(int index) const;
 
-  void Set(const string& nonterm, int i, int j, bool val);
+  void Insert(int index, const Situation& situation);
+
+  bool Contains(int index, const Situation& situation);
+
  private:
-  unordered_map<string, vector<vector<bool>>> table_ = {};
+  vector<SituationList> situation_lists_;
 };
 
-bool CYK(const Grammar& grammar, vector<string> sentence);
+void EarleyScan(SituationLists& situation_lists, const vector<string>& sentence,
+                int situation_idx);
+void EarleyComplete(const Grammar& grammar, SituationLists& situation_lists,
+                    const vector<string>& sentence, int situation_idx);
+void EarleyPredict(const Grammar& grammar, SituationLists& situation_lists,
+                   const vector<string>& sentence, int situation_idx);
+
+bool Earley(const Grammar& grammar, vector<string> sentence);
 
 } // namespace parsing 
 

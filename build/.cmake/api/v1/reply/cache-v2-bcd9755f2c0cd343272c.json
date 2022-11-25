@@ -1519,7 +1519,7 @@
 				}
 			],
 			"type" : "BOOL",
-			"value" : "OFF"
+			"value" : "ON"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Python",
@@ -1735,7 +1735,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "general;gtest;"
+			"value" : "general;gcov;general;gtest;"
 		},
 		{
 			"name" : "gmock_SOURCE_DIR",
@@ -1775,7 +1775,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "general;gmock;"
+			"value" : "general;gcov;general;gmock;"
 		},
 		{
 			"name" : "googletest-distribution_BINARY_DIR",
@@ -1812,6 +1812,18 @@
 			],
 			"type" : "STATIC",
 			"value" : "/home/viktor/repos/automata/build/third_party/googletest/googletest"
+		},
+		{
+			"name" : "gtest_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;gcov;"
 		},
 		{
 			"name" : "gtest_SOURCE_DIR",
@@ -1915,7 +1927,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "general;gtest;"
+			"value" : "general;gcov;general;gtest;"
 		},
 		{
 			"name" : "targets_export_name",

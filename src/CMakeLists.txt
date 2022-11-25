@@ -11,6 +11,7 @@ if(IS_LIB)
       ${ALGO_SOURCE_DIR}/rule.cpp
       ${ALGO_SOURCE_DIR}/grammar.cpp
       ${ALGO_SOURCE_DIR}/algorithms.cpp
+      ${ALGO_SOURCE_DIR}/situation.cpp
   )
 
 else()
@@ -25,6 +26,7 @@ else()
       ${ALGO_SOURCE_DIR}/algorithms.cpp
       ${ALGO_SOURCE_DIR}/rule.cpp
       ${ALGO_SOURCE_DIR}/grammar.cpp
+      ${ALGO_SOURCE_DIR}/situation.cpp
   )
 
 endif()

@@ -32,17 +32,17 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryLo">66.7 %</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-11-25 01:20:41</td>
+            <td class="headerValue">2022-11-25 10:10:10</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">4</td>
-            <td class="headerCovTableEntryLo">50.0 %</td>
+            <td class="headerCovTableEntry">3</td>
+            <td class="headerCovTableEntryLo">66.7 %</td>
           </tr>
           <tr><td><img src="../../../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -107,7 +107,7 @@
 <a name="45"><span class="lineNum">      45 </span>            : class FailedParsingExeption : public std::logic_error {</a>
 <a name="46"><span class="lineNum">      46 </span>            :  public:</a>
 <a name="47"><span class="lineNum">      47 </span>            :   FailedParsingExeption();</a>
-<a name="48"><span class="lineNum">      48 </span><span class="lineCov">         32 :   virtual ~FailedParsingExeption() = default;</span></a>
+<a name="48"><span class="lineNum">      48 </span><span class="lineCov">         25 :   virtual ~FailedParsingExeption() = default;</span></a>
 <a name="49"><span class="lineNum">      49 </span>            : </a>
 <a name="50"><span class="lineNum">      50 </span>            :   const char* what() const noexcept override;</a>
 <a name="51"><span class="lineNum">      51 </span>            : };</a>
@@ -134,11 +134,11 @@
 <a name="72"><span class="lineNum">      72 </span>            :   int pos;</a>
 <a name="73"><span class="lineNum">      73 </span>            : };</a>
 <a name="74"><span class="lineNum">      74 </span>            : </a>
-<a name="75"><span class="lineNum">      75 </span><span class="lineNoCov">          0 : class Rule {</span></a>
+<a name="75"><span class="lineNum">      75 </span>            : class Rule {</a>
 <a name="76"><span class="lineNum">      76 </span>            :  public:</a>
 <a name="77"><span class="lineNum">      77 </span>            :   Rule(Token lhs, TokenSeq rhs);</a>
 <a name="78"><span class="lineNum">      78 </span>            : </a>
-<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         24 :   Rule(const Rule&amp;) = default;</span></a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineCov">         15 :   Rule(const Rule&amp;) = default;</span></a>
 <a name="80"><span class="lineNum">      80 </span>            :   Rule&amp; operator=(const Rule&amp;) = default;</a>
 <a name="81"><span class="lineNum">      81 </span>            : </a>
 <a name="82"><span class="lineNum">      82 </span>            :   bool operator&lt;(const Rule&amp; other) const;</a>
@@ -163,19 +163,20 @@
 <a name="101"><span class="lineNum">     101 </span>            :   static Token GetTerm(ParseString&amp; parse_string);</a>
 <a name="102"><span class="lineNum">     102 </span>            : </a>
 <a name="103"><span class="lineNum">     103 </span>            :   static Token GetStr(ParseString&amp; parse_string, bool is_term);</a>
-<a name="104"><span class="lineNum">     104 </span>            : </a>
-<a name="105"><span class="lineNum">     105 </span>            :   static Token GetWord(ParseString&amp; parse_string);</a>
-<a name="106"><span class="lineNum">     106 </span>            : </a>
-<a name="107"><span class="lineNum">     107 </span>            :   static TokenSeq GetTokenSeq(ParseString&amp; parse_string);</a>
-<a name="108"><span class="lineNum">     108 </span>            : </a>
-<a name="109"><span class="lineNum">     109 </span>            :   static Token GetLhs(ParseString&amp; parse_string);</a>
-<a name="110"><span class="lineNum">     110 </span>            : </a>
-<a name="111"><span class="lineNum">     111 </span>            :   static vector&lt;TokenSeq&gt; GetRhs(ParseString&amp; parse_string);</a>
-<a name="112"><span class="lineNum">     112 </span>            : };</a>
-<a name="113"><span class="lineNum">     113 </span>            : </a>
-<a name="114"><span class="lineNum">     114 </span>            : }  // namespace parsing</a>
-<a name="115"><span class="lineNum">     115 </span>            : </a>
-<a name="116"><span class="lineNum">     116 </span>            : #endif  // PARSING_RULE_H_</a>
+<a name="104"><span class="lineNum">     104 </span>            :   static Token GetQuotedStr(ParseString&amp; parse_string, bool is_term);</a>
+<a name="105"><span class="lineNum">     105 </span>            : </a>
+<a name="106"><span class="lineNum">     106 </span>            :   static Token GetWord(ParseString&amp; parse_string);</a>
+<a name="107"><span class="lineNum">     107 </span>            : </a>
+<a name="108"><span class="lineNum">     108 </span>            :   static TokenSeq GetTokenSeq(ParseString&amp; parse_string);</a>
+<a name="109"><span class="lineNum">     109 </span>            : </a>
+<a name="110"><span class="lineNum">     110 </span>            :   static Token GetLhs(ParseString&amp; parse_string);</a>
+<a name="111"><span class="lineNum">     111 </span>            : </a>
+<a name="112"><span class="lineNum">     112 </span>            :   static vector&lt;TokenSeq&gt; GetRhs(ParseString&amp; parse_string);</a>
+<a name="113"><span class="lineNum">     113 </span>            : };</a>
+<a name="114"><span class="lineNum">     114 </span>            : </a>
+<a name="115"><span class="lineNum">     115 </span>            : }  // namespace parsing</a>
+<a name="116"><span class="lineNum">     116 </span>            : </a>
+<a name="117"><span class="lineNum">     117 </span>            : #endif  // PARSING_RULE_H_</a>
 </pre>
       </td>
     </tr>
