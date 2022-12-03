@@ -7,6 +7,8 @@ using parsing::Grammar;
 using parsing::Rule;
 using std::string;
 
+
+
 TEST(Construction, simple) {
   string str_rules = "A : B 'c';\n"
                      "S : A;\n"
@@ -42,13 +44,3 @@ TEST(Construction, simple) {
   //ASSERT_EQ(grammar.GetTerminals(), set<string>({"c"}));
 }
 
-TEST(Construction, advanced) {
-  /*
-  string str_rules = "A : B 'c';\n"
-                     "A : B  C ;\n";
-
-  Grammar grammar(str_rules);
-  const Rule& rule1 = grammar.GetRules().at(0);
-  const Rule& rule2 = grammar.GetRules().at(1);
-  */
-}

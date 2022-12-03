@@ -50,9 +50,9 @@ class FailedParsingExeption : public std::logic_error {
   const char* what() const noexcept override;
 };
 
-struct ParseString {
+struct ParseRulesHelper {
  public:
-  ParseString(const string& parse);
+  ParseRulesHelper(const string& parse);
 
   void SkipSpaces();
 
@@ -60,15 +60,15 @@ struct ParseString {
 
   bool HasNext();
 
-  char Next();
+  char NextSymbol();
 
   void Next(int count);
 
-  char Curr();
+  char CurrSymbol();
 
   bool HasCurr();
 
-  const string& parse;
+  const string& rules_string;
   int pos;
 };
 
@@ -87,28 +87,28 @@ class Rule {
   const TokenSeq& GetRhs() const;
   const Token& GetRhs(int token_pos) const;
 
-  static void CheckDelimeter(ParseString& parse_string);
-  static void CheckEnding(ParseString& parse_string);
+  static void CheckDelimeter(ParseRulesHelper& parse_string);
+  static void CheckEnding(ParseRulesHelper& parse_string);
 
-  static vector<Rule> ReadRuleLine(ParseString& parse_string);
+  static vector<Rule> ReadRuleLine(ParseRulesHelper& parse_string);
 
  private:
   Token lhs_;
   TokenSeq rhs_;
 
-  static Token GetNonTerm(ParseString& parse_string);
+  static Token GetNonTerm(ParseRulesHelper& parse_string);
 
-  static Token GetTerm(ParseString& parse_string);
+  static Token GetTerm(ParseRulesHelper& parse_string);
 
-  static Token GetStr(ParseString& parse_string, bool is_term);
+  static Token GetStr(ParseRulesHelper& parse_string, bool is_term);
 
-  static Token GetWord(ParseString& parse_string);
+  static Token GetWord(ParseRulesHelper& parse_string);
 
-  static TokenSeq GetTokenSeq(ParseString& parse_string);
+  static TokenSeq GetTokenSeq(ParseRulesHelper& parse_string);
 
-  static Token GetLhs(ParseString& parse_string);
+  static Token GetLhs(ParseRulesHelper& parse_string);
 
-  static vector<TokenSeq> GetRhs(ParseString& parse_string);
+  static vector<TokenSeq> GetRhs(ParseRulesHelper& parse_string);
 };
 
 }  // namespace parsing

@@ -37,12 +37,12 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-11-25 01:20:41</td>
+            <td class="headerValue">2022-12-04 00:57:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">43</td>
-            <td class="headerCovTableEntry">95</td>
-            <td class="headerCovTableEntryLo">45.3 %</td>
+            <td class="headerCovTableEntry">37</td>
+            <td class="headerCovTableEntry">86</td>
+            <td class="headerCovTableEntryLo">43.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -388,7 +388,7 @@
 <a name="326"><span class="lineNum">     326 </span>            : </a>
 <a name="327"><span class="lineNum">     327 </span>            :   // Deletes self.  We deliberately pick an unusual name for this</a>
 <a name="328"><span class="lineNum">     328 </span>            :   // internal method to avoid clashing with names used in user TESTs.</a>
-<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          7 :   void DeleteSelf_() { delete this; }</span></a>
+<a name="329"><span class="lineNum">     329 </span><span class="lineCov">          1 :   void DeleteSelf_() { delete this; }</span></a>
 <a name="330"><span class="lineNum">     330 </span>            : </a>
 <a name="331"><span class="lineNum">     331 </span>            :   const std::unique_ptr&lt;GTEST_FLAG_SAVER_&gt; gtest_flag_saver_;</a>
 <a name="332"><span class="lineNum">     332 </span>            : </a>
@@ -468,7 +468,7 @@
 <a name="406"><span class="lineNum">     406 </span>            :   int test_property_count() const;</a>
 <a name="407"><span class="lineNum">     407 </span>            : </a>
 <a name="408"><span class="lineNum">     408 </span>            :   // Returns true if and only if the test passed (i.e. no test part failed).</a>
-<a name="409"><span class="lineNum">     409 </span><span class="lineCov">         14 :   bool Passed() const { return !Skipped() &amp;&amp; !Failed(); }</span></a>
+<a name="409"><span class="lineNum">     409 </span><span class="lineCov">          2 :   bool Passed() const { return !Skipped() &amp;&amp; !Failed(); }</span></a>
 <a name="410"><span class="lineNum">     410 </span>            : </a>
 <a name="411"><span class="lineNum">     411 </span>            :   // Returns true if and only if the test was skipped.</a>
 <a name="412"><span class="lineNum">     412 </span>            :   bool Skipped() const;</a>
@@ -483,7 +483,7 @@
 <a name="421"><span class="lineNum">     421 </span>            :   bool HasNonfatalFailure() const;</a>
 <a name="422"><span class="lineNum">     422 </span>            : </a>
 <a name="423"><span class="lineNum">     423 </span>            :   // Returns the elapsed time, in milliseconds.</a>
-<a name="424"><span class="lineNum">     424 </span><span class="lineCov">          7 :   TimeInMillis elapsed_time() const { return elapsed_time_; }</span></a>
+<a name="424"><span class="lineNum">     424 </span><span class="lineCov">          1 :   TimeInMillis elapsed_time() const { return elapsed_time_; }</span></a>
 <a name="425"><span class="lineNum">     425 </span>            : </a>
 <a name="426"><span class="lineNum">     426 </span>            :   // Gets the time of the test case start, in ms from the start of the</a>
 <a name="427"><span class="lineNum">     427 </span>            :   // UNIX epoch.</a>
@@ -520,10 +520,10 @@
 <a name="458"><span class="lineNum">     458 </span>            :   }</a>
 <a name="459"><span class="lineNum">     459 </span>            : </a>
 <a name="460"><span class="lineNum">     460 </span>            :   // Sets the start time.</a>
-<a name="461"><span class="lineNum">     461 </span><span class="lineCov">          7 :   void set_start_timestamp(TimeInMillis start) { start_timestamp_ = start; }</span></a>
+<a name="461"><span class="lineNum">     461 </span><span class="lineCov">          1 :   void set_start_timestamp(TimeInMillis start) { start_timestamp_ = start; }</span></a>
 <a name="462"><span class="lineNum">     462 </span>            : </a>
 <a name="463"><span class="lineNum">     463 </span>            :   // Sets the elapsed time.</a>
-<a name="464"><span class="lineNum">     464 </span><span class="lineCov">          7 :   void set_elapsed_time(TimeInMillis elapsed) { elapsed_time_ = elapsed; }</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">          1 :   void set_elapsed_time(TimeInMillis elapsed) { elapsed_time_ = elapsed; }</span></a>
 <a name="465"><span class="lineNum">     465 </span>            : </a>
 <a name="466"><span class="lineNum">     466 </span>            :   // Adds a test property to the list. The property is validated and may add</a>
 <a name="467"><span class="lineNum">     467 </span>            :   // a non-fatal failure if invalid (e.g., if it conflicts with reserved</a>
@@ -593,7 +593,7 @@
 <a name="531"><span class="lineNum">     531 </span>            :   ~TestInfo();</a>
 <a name="532"><span class="lineNum">     532 </span>            : </a>
 <a name="533"><span class="lineNum">     533 </span>            :   // Returns the test suite name.</a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineCov">         21 :   const char* test_suite_name() const { return test_suite_name_.c_str(); }</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">          3 :   const char* test_suite_name() const { return test_suite_name_.c_str(); }</span></a>
 <a name="535"><span class="lineNum">     535 </span>            : </a>
 <a name="536"><span class="lineNum">     536 </span>            : // Legacy API is deprecated but still available</a>
 <a name="537"><span class="lineNum">     537 </span>            : #ifndef GTEST_REMOVE_LEGACY_TEST_CASEAPI_</a>
@@ -601,13 +601,13 @@
 <a name="539"><span class="lineNum">     539 </span>            : #endif  // GTEST_REMOVE_LEGACY_TEST_CASEAPI_</a>
 <a name="540"><span class="lineNum">     540 </span>            : </a>
 <a name="541"><span class="lineNum">     541 </span>            :   // Returns the test name.</a>
-<a name="542"><span class="lineNum">     542 </span><span class="lineCov">         35 :   const char* name() const { return name_.c_str(); }</span></a>
+<a name="542"><span class="lineNum">     542 </span><span class="lineCov">          5 :   const char* name() const { return name_.c_str(); }</span></a>
 <a name="543"><span class="lineNum">     543 </span>            : </a>
 <a name="544"><span class="lineNum">     544 </span>            :   // Returns the name of the parameter type, or NULL if this is not a typed</a>
 <a name="545"><span class="lineNum">     545 </span>            :   // or a type-parameterized test.</a>
-<a name="546"><span class="lineNum">     546 </span><span class="lineCov">          7 :   const char* type_param() const {</span></a>
-<a name="547"><span class="lineNum">     547 </span><span class="lineCov">          7 :     if (type_param_.get() != nullptr) return type_param_-&gt;c_str();</span></a>
-<a name="548"><span class="lineNum">     548 </span><span class="lineCov">          7 :     return nullptr;</span></a>
+<a name="546"><span class="lineNum">     546 </span><span class="lineCov">          1 :   const char* type_param() const {</span></a>
+<a name="547"><span class="lineNum">     547 </span><span class="lineCov">          1 :     if (type_param_.get() != nullptr) return type_param_-&gt;c_str();</span></a>
+<a name="548"><span class="lineNum">     548 </span><span class="lineCov">          1 :     return nullptr;</span></a>
 <a name="549"><span class="lineNum">     549 </span>            :   }</a>
 <a name="550"><span class="lineNum">     550 </span>            : </a>
 <a name="551"><span class="lineNum">     551 </span>            :   // Returns the text representation of the value parameter, or NULL if this</a>
@@ -642,17 +642,17 @@
 <a name="580"><span class="lineNum">     580 </span>            :   //</a>
 <a name="581"><span class="lineNum">     581 </span>            :   // For example, *A*:Foo.* is a filter that matches any string that</a>
 <a name="582"><span class="lineNum">     582 </span>            :   // contains the character 'A' or starts with &quot;Foo.&quot;.</a>
-<a name="583"><span class="lineNum">     583 </span><span class="lineCov">         56 :   bool should_run() const { return should_run_; }</span></a>
+<a name="583"><span class="lineNum">     583 </span><span class="lineCov">          8 :   bool should_run() const { return should_run_; }</span></a>
 <a name="584"><span class="lineNum">     584 </span>            : </a>
 <a name="585"><span class="lineNum">     585 </span>            :   // Returns true if and only if this test will appear in the XML report.</a>
-<a name="586"><span class="lineNum">     586 </span><span class="lineCov">          7 :   bool is_reportable() const {</span></a>
+<a name="586"><span class="lineNum">     586 </span><span class="lineCov">          1 :   bool is_reportable() const {</span></a>
 <a name="587"><span class="lineNum">     587 </span>            :     // The XML report includes tests matching the filter, excluding those</a>
 <a name="588"><span class="lineNum">     588 </span>            :     // run in other shards.</a>
-<a name="589"><span class="lineNum">     589 </span><span class="lineCov">          7 :     return matches_filter_ &amp;&amp; !is_in_another_shard_;</span></a>
+<a name="589"><span class="lineNum">     589 </span><span class="lineCov">          1 :     return matches_filter_ &amp;&amp; !is_in_another_shard_;</span></a>
 <a name="590"><span class="lineNum">     590 </span>            :   }</a>
 <a name="591"><span class="lineNum">     591 </span>            : </a>
 <a name="592"><span class="lineNum">     592 </span>            :   // Returns the result of the test.</a>
-<a name="593"><span class="lineNum">     593 </span><span class="lineCov">         49 :   const TestResult* result() const { return &amp;result_; }</span></a>
+<a name="593"><span class="lineNum">     593 </span><span class="lineCov">          7 :   const TestResult* result() const { return &amp;result_; }</span></a>
 <a name="594"><span class="lineNum">     594 </span>            : </a>
 <a name="595"><span class="lineNum">     595 </span>            :  private:</a>
 <a name="596"><span class="lineNum">     596 </span>            : #if GTEST_HAS_DEATH_TEST</a>
@@ -691,9 +691,9 @@
 <a name="629"><span class="lineNum">     629 </span>            :   // Skip and records the test result for this object.</a>
 <a name="630"><span class="lineNum">     630 </span>            :   void Skip();</a>
 <a name="631"><span class="lineNum">     631 </span>            : </a>
-<a name="632"><span class="lineNum">     632 </span><span class="lineCov">          7 :   static void ClearTestResult(TestInfo* test_info) {</span></a>
-<a name="633"><span class="lineNum">     633 </span><span class="lineCov">          7 :     test_info-&gt;result_.Clear();</span></a>
-<a name="634"><span class="lineNum">     634 </span><span class="lineCov">          7 :   }</span></a>
+<a name="632"><span class="lineNum">     632 </span><span class="lineCov">          1 :   static void ClearTestResult(TestInfo* test_info) {</span></a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">          1 :     test_info-&gt;result_.Clear();</span></a>
+<a name="634"><span class="lineNum">     634 </span><span class="lineCov">          1 :   }</span></a>
 <a name="635"><span class="lineNum">     635 </span>            : </a>
 <a name="636"><span class="lineNum">     636 </span>            :   // These fields are immutable properties of the test.</a>
 <a name="637"><span class="lineNum">     637 </span>            :   const std::string test_suite_name_;  // test suite name</a>
@@ -747,17 +747,17 @@
 <a name="685"><span class="lineNum">     685 </span>            :   virtual ~TestSuite();</a>
 <a name="686"><span class="lineNum">     686 </span>            : </a>
 <a name="687"><span class="lineNum">     687 </span>            :   // Gets the name of the TestSuite.</a>
-<a name="688"><span class="lineNum">     688 </span><span class="lineCov">         11 :   const char* name() const { return name_.c_str(); }</span></a>
+<a name="688"><span class="lineNum">     688 </span><span class="lineCov">          3 :   const char* name() const { return name_.c_str(); }</span></a>
 <a name="689"><span class="lineNum">     689 </span>            : </a>
 <a name="690"><span class="lineNum">     690 </span>            :   // Returns the name of the parameter type, or NULL if this is not a</a>
 <a name="691"><span class="lineNum">     691 </span>            :   // type-parameterized test suite.</a>
-<a name="692"><span class="lineNum">     692 </span><span class="lineCov">          2 :   const char* type_param() const {</span></a>
-<a name="693"><span class="lineNum">     693 </span><span class="lineCov">          2 :     if (type_param_.get() != nullptr) return type_param_-&gt;c_str();</span></a>
-<a name="694"><span class="lineNum">     694 </span><span class="lineCov">          2 :     return nullptr;</span></a>
+<a name="692"><span class="lineNum">     692 </span><span class="lineCov">          1 :   const char* type_param() const {</span></a>
+<a name="693"><span class="lineNum">     693 </span><span class="lineCov">          1 :     if (type_param_.get() != nullptr) return type_param_-&gt;c_str();</span></a>
+<a name="694"><span class="lineNum">     694 </span><span class="lineCov">          1 :     return nullptr;</span></a>
 <a name="695"><span class="lineNum">     695 </span>            :   }</a>
 <a name="696"><span class="lineNum">     696 </span>            : </a>
 <a name="697"><span class="lineNum">     697 </span>            :   // Returns true if any test in this test suite should run.</a>
-<a name="698"><span class="lineNum">     698 </span><span class="lineCov">         15 :   bool should_run() const { return should_run_; }</span></a>
+<a name="698"><span class="lineNum">     698 </span><span class="lineCov">          5 :   bool should_run() const { return should_run_; }</span></a>
 <a name="699"><span class="lineNum">     699 </span>            : </a>
 <a name="700"><span class="lineNum">     700 </span>            :   // Gets the number of successful tests in this test suite.</a>
 <a name="701"><span class="lineNum">     701 </span>            :   int successful_test_count() const;</a>
@@ -787,12 +787,12 @@
 <a name="725"><span class="lineNum">     725 </span><span class="lineNoCov">          0 :   bool Passed() const { return !Failed(); }</span></a>
 <a name="726"><span class="lineNum">     726 </span>            : </a>
 <a name="727"><span class="lineNum">     727 </span>            :   // Returns true if and only if the test suite failed.</a>
-<a name="728"><span class="lineNum">     728 </span><span class="lineCov">          4 :   bool Failed() const {</span></a>
-<a name="729"><span class="lineNum">     729 </span><span class="lineCov">          4 :     return failed_test_count() &gt; 0 || ad_hoc_test_result().Failed();</span></a>
+<a name="728"><span class="lineNum">     728 </span><span class="lineCov">          2 :   bool Failed() const {</span></a>
+<a name="729"><span class="lineNum">     729 </span><span class="lineCov">          2 :     return failed_test_count() &gt; 0 || ad_hoc_test_result().Failed();</span></a>
 <a name="730"><span class="lineNum">     730 </span>            :   }</a>
 <a name="731"><span class="lineNum">     731 </span>            : </a>
 <a name="732"><span class="lineNum">     732 </span>            :   // Returns the elapsed time, in milliseconds.</a>
-<a name="733"><span class="lineNum">     733 </span><span class="lineCov">          2 :   TimeInMillis elapsed_time() const { return elapsed_time_; }</span></a>
+<a name="733"><span class="lineNum">     733 </span><span class="lineCov">          1 :   TimeInMillis elapsed_time() const { return elapsed_time_; }</span></a>
 <a name="734"><span class="lineNum">     734 </span>            : </a>
 <a name="735"><span class="lineNum">     735 </span>            :   // Gets the time of the test suite start, in ms from the start of the</a>
 <a name="736"><span class="lineNum">     736 </span>            :   // UNIX epoch.</a>
@@ -804,18 +804,18 @@
 <a name="742"><span class="lineNum">     742 </span>            : </a>
 <a name="743"><span class="lineNum">     743 </span>            :   // Returns the TestResult that holds test properties recorded during</a>
 <a name="744"><span class="lineNum">     744 </span>            :   // execution of SetUpTestSuite and TearDownTestSuite.</a>
-<a name="745"><span class="lineNum">     745 </span><span class="lineCov">          6 :   const TestResult&amp; ad_hoc_test_result() const { return ad_hoc_test_result_; }</span></a>
+<a name="745"><span class="lineNum">     745 </span><span class="lineCov">          3 :   const TestResult&amp; ad_hoc_test_result() const { return ad_hoc_test_result_; }</span></a>
 <a name="746"><span class="lineNum">     746 </span>            : </a>
 <a name="747"><span class="lineNum">     747 </span>            :  private:</a>
 <a name="748"><span class="lineNum">     748 </span>            :   friend class Test;</a>
 <a name="749"><span class="lineNum">     749 </span>            :   friend class internal::UnitTestImpl;</a>
 <a name="750"><span class="lineNum">     750 </span>            : </a>
 <a name="751"><span class="lineNum">     751 </span>            :   // Gets the (mutable) vector of TestInfos in this TestSuite.</a>
-<a name="752"><span class="lineNum">     752 </span><span class="lineCov">         16 :   std::vector&lt;TestInfo*&gt;&amp; test_info_list() { return test_info_list_; }</span></a>
+<a name="752"><span class="lineNum">     752 </span><span class="lineCov">          3 :   std::vector&lt;TestInfo*&gt;&amp; test_info_list() { return test_info_list_; }</span></a>
 <a name="753"><span class="lineNum">     753 </span>            : </a>
 <a name="754"><span class="lineNum">     754 </span>            :   // Gets the (immutable) vector of TestInfos in this TestSuite.</a>
-<a name="755"><span class="lineNum">     755 </span><span class="lineCov">          7 :   const std::vector&lt;TestInfo*&gt;&amp; test_info_list() const {</span></a>
-<a name="756"><span class="lineNum">     756 </span><span class="lineCov">          7 :     return test_info_list_;</span></a>
+<a name="755"><span class="lineNum">     755 </span><span class="lineCov">          1 :   const std::vector&lt;TestInfo*&gt;&amp; test_info_list() const {</span></a>
+<a name="756"><span class="lineNum">     756 </span><span class="lineCov">          1 :     return test_info_list_;</span></a>
 <a name="757"><span class="lineNum">     757 </span>            :   }</a>
 <a name="758"><span class="lineNum">     758 </span>            : </a>
 <a name="759"><span class="lineNum">     759 </span>            :   // Returns the i-th test among all the tests. i can range from 0 to</a>
@@ -823,7 +823,7 @@
 <a name="761"><span class="lineNum">     761 </span>            :   TestInfo* GetMutableTestInfo(int i);</a>
 <a name="762"><span class="lineNum">     762 </span>            : </a>
 <a name="763"><span class="lineNum">     763 </span>            :   // Sets the should_run member.</a>
-<a name="764"><span class="lineNum">     764 </span><span class="lineCov">          9 :   void set_should_run(bool should) { should_run_ = should; }</span></a>
+<a name="764"><span class="lineNum">     764 </span><span class="lineCov">          2 :   void set_should_run(bool should) { should_run_ = should; }</span></a>
 <a name="765"><span class="lineNum">     765 </span>            : </a>
 <a name="766"><span class="lineNum">     766 </span>            :   // Adds a TestInfo to this test suite.  Will delete the TestInfo upon</a>
 <a name="767"><span class="lineNum">     767 </span>            :   // destruction of the TestSuite object.</a>
@@ -833,9 +833,9 @@
 <a name="771"><span class="lineNum">     771 </span>            :   void ClearResult();</a>
 <a name="772"><span class="lineNum">     772 </span>            : </a>
 <a name="773"><span class="lineNum">     773 </span>            :   // Clears the results of all tests in the given test suite.</a>
-<a name="774"><span class="lineNum">     774 </span><span class="lineCov">          2 :   static void ClearTestSuiteResult(TestSuite* test_suite) {</span></a>
-<a name="775"><span class="lineNum">     775 </span><span class="lineCov">          2 :     test_suite-&gt;ClearResult();</span></a>
-<a name="776"><span class="lineNum">     776 </span><span class="lineCov">          2 :   }</span></a>
+<a name="774"><span class="lineNum">     774 </span><span class="lineCov">          1 :   static void ClearTestSuiteResult(TestSuite* test_suite) {</span></a>
+<a name="775"><span class="lineNum">     775 </span><span class="lineCov">          1 :     test_suite-&gt;ClearResult();</span></a>
+<a name="776"><span class="lineNum">     776 </span><span class="lineCov">          1 :   }</span></a>
 <a name="777"><span class="lineNum">     777 </span>            : </a>
 <a name="778"><span class="lineNum">     778 </span>            :   // Runs every test in this TestSuite.</a>
 <a name="779"><span class="lineNum">     779 </span>            :   void Run();</a>
@@ -845,39 +845,39 @@
 <a name="783"><span class="lineNum">     783 </span>            : </a>
 <a name="784"><span class="lineNum">     784 </span>            :   // Runs SetUpTestSuite() for this TestSuite.  This wrapper is needed</a>
 <a name="785"><span class="lineNum">     785 </span>            :   // for catching exceptions thrown from SetUpTestSuite().</a>
-<a name="786"><span class="lineNum">     786 </span><span class="lineCov">          2 :   void RunSetUpTestSuite() {</span></a>
-<a name="787"><span class="lineNum">     787 </span><span class="lineCov">          2 :     if (set_up_tc_ != nullptr) {</span></a>
+<a name="786"><span class="lineNum">     786 </span><span class="lineCov">          1 :   void RunSetUpTestSuite() {</span></a>
+<a name="787"><span class="lineNum">     787 </span><span class="lineCov">          1 :     if (set_up_tc_ != nullptr) {</span></a>
 <a name="788"><span class="lineNum">     788 </span><span class="lineNoCov">          0 :       (*set_up_tc_)();</span></a>
 <a name="789"><span class="lineNum">     789 </span>            :     }</a>
-<a name="790"><span class="lineNum">     790 </span><span class="lineCov">          2 :   }</span></a>
+<a name="790"><span class="lineNum">     790 </span><span class="lineCov">          1 :   }</span></a>
 <a name="791"><span class="lineNum">     791 </span>            : </a>
 <a name="792"><span class="lineNum">     792 </span>            :   // Runs TearDownTestSuite() for this TestSuite.  This wrapper is</a>
 <a name="793"><span class="lineNum">     793 </span>            :   // needed for catching exceptions thrown from TearDownTestSuite().</a>
-<a name="794"><span class="lineNum">     794 </span><span class="lineCov">          2 :   void RunTearDownTestSuite() {</span></a>
-<a name="795"><span class="lineNum">     795 </span><span class="lineCov">          2 :     if (tear_down_tc_ != nullptr) {</span></a>
+<a name="794"><span class="lineNum">     794 </span><span class="lineCov">          1 :   void RunTearDownTestSuite() {</span></a>
+<a name="795"><span class="lineNum">     795 </span><span class="lineCov">          1 :     if (tear_down_tc_ != nullptr) {</span></a>
 <a name="796"><span class="lineNum">     796 </span><span class="lineNoCov">          0 :       (*tear_down_tc_)();</span></a>
 <a name="797"><span class="lineNum">     797 </span>            :     }</a>
-<a name="798"><span class="lineNum">     798 </span><span class="lineCov">          2 :   }</span></a>
+<a name="798"><span class="lineNum">     798 </span><span class="lineCov">          1 :   }</span></a>
 <a name="799"><span class="lineNum">     799 </span>            : </a>
 <a name="800"><span class="lineNum">     800 </span>            :   // Returns true if and only if test passed.</a>
-<a name="801"><span class="lineNum">     801 </span><span class="lineCov">          7 :   static bool TestPassed(const TestInfo* test_info) {</span></a>
-<a name="802"><span class="lineNum">     802 </span><span class="lineCov">          7 :     return test_info-&gt;should_run() &amp;&amp; test_info-&gt;result()-&gt;Passed();</span></a>
+<a name="801"><span class="lineNum">     801 </span><span class="lineCov">          1 :   static bool TestPassed(const TestInfo* test_info) {</span></a>
+<a name="802"><span class="lineNum">     802 </span><span class="lineCov">          1 :     return test_info-&gt;should_run() &amp;&amp; test_info-&gt;result()-&gt;Passed();</span></a>
 <a name="803"><span class="lineNum">     803 </span>            :   }</a>
 <a name="804"><span class="lineNum">     804 </span>            : </a>
 <a name="805"><span class="lineNum">     805 </span>            :   // Returns true if and only if test skipped.</a>
-<a name="806"><span class="lineNum">     806 </span><span class="lineCov">          7 :   static bool TestSkipped(const TestInfo* test_info) {</span></a>
-<a name="807"><span class="lineNum">     807 </span><span class="lineCov">          7 :     return test_info-&gt;should_run() &amp;&amp; test_info-&gt;result()-&gt;Skipped();</span></a>
+<a name="806"><span class="lineNum">     806 </span><span class="lineCov">          1 :   static bool TestSkipped(const TestInfo* test_info) {</span></a>
+<a name="807"><span class="lineNum">     807 </span><span class="lineCov">          1 :     return test_info-&gt;should_run() &amp;&amp; test_info-&gt;result()-&gt;Skipped();</span></a>
 <a name="808"><span class="lineNum">     808 </span>            :   }</a>
 <a name="809"><span class="lineNum">     809 </span>            : </a>
 <a name="810"><span class="lineNum">     810 </span>            :   // Returns true if and only if test failed.</a>
-<a name="811"><span class="lineNum">     811 </span><span class="lineCov">         14 :   static bool TestFailed(const TestInfo* test_info) {</span></a>
-<a name="812"><span class="lineNum">     812 </span><span class="lineCov">         14 :     return test_info-&gt;should_run() &amp;&amp; test_info-&gt;result()-&gt;Failed();</span></a>
+<a name="811"><span class="lineNum">     811 </span><span class="lineCov">          2 :   static bool TestFailed(const TestInfo* test_info) {</span></a>
+<a name="812"><span class="lineNum">     812 </span><span class="lineCov">          2 :     return test_info-&gt;should_run() &amp;&amp; test_info-&gt;result()-&gt;Failed();</span></a>
 <a name="813"><span class="lineNum">     813 </span>            :   }</a>
 <a name="814"><span class="lineNum">     814 </span>            : </a>
 <a name="815"><span class="lineNum">     815 </span>            :   // Returns true if and only if the test is disabled and will be reported in</a>
 <a name="816"><span class="lineNum">     816 </span>            :   // the XML report.</a>
-<a name="817"><span class="lineNum">     817 </span><span class="lineCov">          7 :   static bool TestReportableDisabled(const TestInfo* test_info) {</span></a>
-<a name="818"><span class="lineNum">     818 </span><span class="lineCov">          7 :     return test_info-&gt;is_reportable() &amp;&amp; test_info-&gt;is_disabled_;</span></a>
+<a name="817"><span class="lineNum">     817 </span><span class="lineCov">          1 :   static bool TestReportableDisabled(const TestInfo* test_info) {</span></a>
+<a name="818"><span class="lineNum">     818 </span><span class="lineCov">          1 :     return test_info-&gt;is_reportable() &amp;&amp; test_info-&gt;is_disabled_;</span></a>
 <a name="819"><span class="lineNum">     819 </span>            :   }</a>
 <a name="820"><span class="lineNum">     820 </span>            : </a>
 <a name="821"><span class="lineNum">     821 </span>            :   // Returns true if and only if test is disabled.</a>
@@ -891,8 +891,8 @@
 <a name="829"><span class="lineNum">     829 </span>            :   }</a>
 <a name="830"><span class="lineNum">     830 </span>            : </a>
 <a name="831"><span class="lineNum">     831 </span>            :   // Returns true if the given test should run.</a>
-<a name="832"><span class="lineNum">     832 </span><span class="lineCov">         28 :   static bool ShouldRunTest(const TestInfo* test_info) {</span></a>
-<a name="833"><span class="lineNum">     833 </span><span class="lineCov">         28 :     return test_info-&gt;should_run();</span></a>
+<a name="832"><span class="lineNum">     832 </span><span class="lineCov">          4 :   static bool ShouldRunTest(const TestInfo* test_info) {</span></a>
+<a name="833"><span class="lineNum">     833 </span><span class="lineCov">          4 :     return test_info-&gt;should_run();</span></a>
 <a name="834"><span class="lineNum">     834 </span>            :   }</a>
 <a name="835"><span class="lineNum">     835 </span>            : </a>
 <a name="836"><span class="lineNum">     836 </span>            :   // Shuffles the tests in this test suite.</a>
@@ -980,7 +980,7 @@
 <a name="918"><span class="lineNum">     918 </span>            : // the order the corresponding events are fired.</a>
 <a name="919"><span class="lineNum">     919 </span>            : class TestEventListener {</a>
 <a name="920"><span class="lineNum">     920 </span>            :  public:</a>
-<a name="921"><span class="lineNum">     921 </span><span class="lineCov">          4 :   virtual ~TestEventListener() {}</span></a>
+<a name="921"><span class="lineNum">     921 </span><span class="lineCov">          2 :   virtual ~TestEventListener() {}</span></a>
 <a name="922"><span class="lineNum">     922 </span>            : </a>
 <a name="923"><span class="lineNum">     923 </span>            :   // Fired before any test activity starts.</a>
 <a name="924"><span class="lineNum">     924 </span>            :   virtual void OnTestProgramStart(const UnitTest&amp; unit_test) = 0;</a>
@@ -998,7 +998,7 @@
 <a name="936"><span class="lineNum">     936 </span>            :   virtual void OnEnvironmentsSetUpEnd(const UnitTest&amp; unit_test) = 0;</a>
 <a name="937"><span class="lineNum">     937 </span>            : </a>
 <a name="938"><span class="lineNum">     938 </span>            :   // Fired before the test suite starts.</a>
-<a name="939"><span class="lineNum">     939 </span><span class="lineCov">          2 :   virtual void OnTestSuiteStart(const TestSuite&amp; /*test_suite*/) {}</span></a>
+<a name="939"><span class="lineNum">     939 </span><span class="lineCov">          1 :   virtual void OnTestSuiteStart(const TestSuite&amp; /*test_suite*/) {}</span></a>
 <a name="940"><span class="lineNum">     940 </span>            : </a>
 <a name="941"><span class="lineNum">     941 </span>            :   //  Legacy API is deprecated but still available</a>
 <a name="942"><span class="lineNum">     942 </span>            : #ifndef GTEST_REMOVE_LEGACY_TEST_CASEAPI_</a>
@@ -1020,7 +1020,7 @@
 <a name="958"><span class="lineNum">     958 </span>            :   virtual void OnTestEnd(const TestInfo&amp; test_info) = 0;</a>
 <a name="959"><span class="lineNum">     959 </span>            : </a>
 <a name="960"><span class="lineNum">     960 </span>            :   // Fired after the test suite ends.</a>
-<a name="961"><span class="lineNum">     961 </span><span class="lineCov">          2 :   virtual void OnTestSuiteEnd(const TestSuite&amp; /*test_suite*/) {}</span></a>
+<a name="961"><span class="lineNum">     961 </span><span class="lineCov">          1 :   virtual void OnTestSuiteEnd(const TestSuite&amp; /*test_suite*/) {}</span></a>
 <a name="962"><span class="lineNum">     962 </span>            : </a>
 <a name="963"><span class="lineNum">     963 </span>            : //  Legacy API is deprecated but still available</a>
 <a name="964"><span class="lineNum">     964 </span>            : #ifndef GTEST_REMOVE_LEGACY_TEST_CASEAPI_</a>
@@ -1316,8 +1316,8 @@
 <a name="1254"><span class="lineNum">    1254 </span>            :   TestSuite* GetMutableTestSuite(int i);</a>
 <a name="1255"><span class="lineNum">    1255 </span>            : </a>
 <a name="1256"><span class="lineNum">    1256 </span>            :   // Accessors for the implementation object.</a>
-<a name="1257"><span class="lineNum">    1257 </span><span class="lineCov">        120 :   internal::UnitTestImpl* impl() { return impl_; }</span></a>
-<a name="1258"><span class="lineNum">    1258 </span><span class="lineCov">         18 :   const internal::UnitTestImpl* impl() const { return impl_; }</span></a>
+<a name="1257"><span class="lineNum">    1257 </span><span class="lineCov">         25 :   internal::UnitTestImpl* impl() { return impl_; }</span></a>
+<a name="1258"><span class="lineNum">    1258 </span><span class="lineCov">          9 :   const internal::UnitTestImpl* impl() const { return impl_; }</span></a>
 <a name="1259"><span class="lineNum">    1259 </span>            : </a>
 <a name="1260"><span class="lineNum">    1260 </span>            :   // These classes and functions are friends as they need to access private</a>
 <a name="1261"><span class="lineNum">    1261 </span>            :   // members of UnitTest.</a>
@@ -1425,11 +1425,11 @@
 <a name="1363"><span class="lineNum">    1363 </span>            : </a>
 <a name="1364"><span class="lineNum">    1364 </span>            : // The helper function for {ASSERT|EXPECT}_EQ.</a>
 <a name="1365"><span class="lineNum">    1365 </span>            : template &lt;typename T1, typename T2&gt;</a>
-<a name="1366"><span class="lineNum">    1366 </span><span class="lineCov">         57 : AssertionResult CmpHelperEQ(const char* lhs_expression,</span></a>
+<a name="1366"><span class="lineNum">    1366 </span><span class="lineCov">          1 : AssertionResult CmpHelperEQ(const char* lhs_expression,</span></a>
 <a name="1367"><span class="lineNum">    1367 </span>            :                             const char* rhs_expression, const T1&amp; lhs,</a>
 <a name="1368"><span class="lineNum">    1368 </span>            :                             const T2&amp; rhs) {</a>
-<a name="1369"><span class="lineNum">    1369 </span><span class="lineCov">         57 :   if (lhs == rhs) {</span></a>
-<a name="1370"><span class="lineNum">    1370 </span><span class="lineCov">         57 :     return AssertionSuccess();</span></a>
+<a name="1369"><span class="lineNum">    1369 </span><span class="lineCov">          1 :   if (lhs == rhs) {</span></a>
+<a name="1370"><span class="lineNum">    1370 </span><span class="lineCov">          1 :     return AssertionSuccess();</span></a>
 <a name="1371"><span class="lineNum">    1371 </span>            :   }</a>
 <a name="1372"><span class="lineNum">    1372 </span>            : </a>
 <a name="1373"><span class="lineNum">    1373 </span><span class="lineNoCov">          0 :   return CmpHelperEQFailure(lhs_expression, rhs_expression, lhs, rhs);</span></a>
@@ -1444,10 +1444,10 @@
 <a name="1382"><span class="lineNum">    1382 </span>            :       // and the other is the null pointer constant.</a>
 <a name="1383"><span class="lineNum">    1383 </span>            :       typename std::enable_if&lt;!std::is_integral&lt;T1&gt;::value ||</a>
 <a name="1384"><span class="lineNum">    1384 </span>            :                               !std::is_pointer&lt;T2&gt;::value&gt;::type* = nullptr&gt;</a>
-<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">         57 :   static AssertionResult Compare(const char* lhs_expression,</span></a>
+<a name="1385"><span class="lineNum">    1385 </span><span class="lineCov">          1 :   static AssertionResult Compare(const char* lhs_expression,</span></a>
 <a name="1386"><span class="lineNum">    1386 </span>            :                                  const char* rhs_expression, const T1&amp; lhs,</a>
 <a name="1387"><span class="lineNum">    1387 </span>            :                                  const T2&amp; rhs) {</a>
-<a name="1388"><span class="lineNum">    1388 </span><span class="lineCov">         57 :     return CmpHelperEQ(lhs_expression, rhs_expression, lhs, rhs);</span></a>
+<a name="1388"><span class="lineNum">    1388 </span><span class="lineCov">          1 :     return CmpHelperEQ(lhs_expression, rhs_expression, lhs, rhs);</span></a>
 <a name="1389"><span class="lineNum">    1389 </span>            :   }</a>
 <a name="1390"><span class="lineNum">    1390 </span>            : </a>
 <a name="1391"><span class="lineNum">    1391 </span>            :   // With this overloaded version, we allow anonymous enums to be used</a>
@@ -2363,7 +2363,7 @@
 <a name="2301"><span class="lineNum">    2301 </span>            : // namespace and has an all-caps name.</a>
 <a name="2302"><span class="lineNum">    2302 </span>            : int RUN_ALL_TESTS() GTEST_MUST_USE_RESULT_;</a>
 <a name="2303"><span class="lineNum">    2303 </span>            : </a>
-<a name="2304"><span class="lineNum">    2304 </span><span class="lineCov">          2 : inline int RUN_ALL_TESTS() { return ::testing::UnitTest::GetInstance()-&gt;Run(); }</span></a>
+<a name="2304"><span class="lineNum">    2304 </span><span class="lineCov">          1 : inline int RUN_ALL_TESTS() { return ::testing::UnitTest::GetInstance()-&gt;Run(); }</span></a>
 <a name="2305"><span class="lineNum">    2305 </span>            : </a>
 <a name="2306"><span class="lineNum">    2306 </span>            : GTEST_DISABLE_MSC_WARNINGS_POP_()  //  4251</a>
 <a name="2307"><span class="lineNum">    2307 </span>            : </a>

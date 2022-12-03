@@ -11,6 +11,7 @@ using parsing::Rule;
 using std::string;
 using std::vector;
 
+
 TEST(CYK, simple) {
   string str_rules = "NP   :  Det Nom                                   ;"
                      "Nom  :  AP Nom                                    ;"

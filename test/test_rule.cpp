@@ -6,12 +6,13 @@
 using std::vector;
 using std::string;
 using parsing::Rule;
-using parsing::ParseString;
+using parsing::ParseRulesHelper;
+
 
 TEST(Construction, simple_terminals) {
   string str_rule = "A : B C;";
 
-  ParseString parse_string(str_rule);
+  ParseRulesHelper parse_string(str_rule);
   vector<Rule> rules = Rule::ReadRuleLine(parse_string);
   ASSERT_EQ(rules.size(), 1);
   
@@ -27,7 +28,7 @@ TEST(Construction, simple_terminals) {
 TEST(Construction, simple_non_terminals) {
   string str_rule = "A : 'b' 'c';";
 
-  ParseString parse_string(str_rule);
+  ParseRulesHelper parse_string(str_rule);
   vector<Rule> rules = Rule::ReadRuleLine(parse_string);
   ASSERT_EQ(rules.size(), 1);
   
@@ -44,7 +45,7 @@ TEST(Construction, simple_non_terminals) {
 TEST(Construction, simple_mixed) {
   string str_rule = "A : B 'c';";
 
-  ParseString parse_string(str_rule);
+  ParseRulesHelper parse_string(str_rule);
   vector<Rule> rules = Rule::ReadRuleLine(parse_string);
   ASSERT_EQ(rules.size(), 1);
   
@@ -60,7 +61,7 @@ TEST(Construction, simple_mixed) {
 TEST(Construction, advanced_oneline) {
   string str_rule = "A : B 'c' | Lol 'kek' | testtt ;";
 
-  ParseString parse_string(str_rule);
+  ParseRulesHelper parse_string(str_rule);
   vector<Rule> rules = Rule::ReadRuleLine(parse_string);
   ASSERT_EQ(rules.size(), 3);
   
@@ -87,7 +88,7 @@ TEST(Construction, advanced_multiline) {
                         "| Lol 'kek' \n"
                         "|testtt ;";
 
-  ParseString parse_string(str_rule);
+  ParseRulesHelper parse_string(str_rule);
   vector<Rule> rules = Rule::ReadRuleLine(parse_string);
   ASSERT_EQ(rules.size(), 3);
   
@@ -108,3 +109,4 @@ TEST(Construction, advanced_multiline) {
   ASSERT_EQ(*rules.at(2).GetRhs(0).data, string("testtt"));
   ASSERT_EQ(rules.at(2).GetRhs(0).is_term, false);
 }
+

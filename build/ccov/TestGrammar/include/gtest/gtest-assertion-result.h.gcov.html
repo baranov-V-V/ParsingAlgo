@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2022-11-25 01:20:41</td>
+            <td class="headerValue">2022-12-04 00:57:14</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -214,13 +214,13 @@
 <a name="152"><span class="lineNum">     152 </span>            :   // the argument is implicitly convertible to AssertionResult. In that case</a>
 <a name="153"><span class="lineNum">     153 </span>            :   // we want AssertionResult's copy constructor to be used.</a>
 <a name="154"><span class="lineNum">     154 </span>            :   template &lt;typename T&gt;</a>
-<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         57 :   explicit AssertionResult(</span></a>
+<a name="155"><span class="lineNum">     155 </span><span class="lineCov">         15 :   explicit AssertionResult(</span></a>
 <a name="156"><span class="lineNum">     156 </span>            :       const T&amp; success,</a>
 <a name="157"><span class="lineNum">     157 </span>            :       typename std::enable_if&lt;</a>
 <a name="158"><span class="lineNum">     158 </span>            :           !std::is_convertible&lt;T, AssertionResult&gt;::value&gt;::type*</a>
 <a name="159"><span class="lineNum">     159 </span>            :       /*enabler*/</a>
 <a name="160"><span class="lineNum">     160 </span>            :       = nullptr)</a>
-<a name="161"><span class="lineNum">     161 </span><span class="lineCov">         57 :       : success_(success) {}</span></a>
+<a name="161"><span class="lineNum">     161 </span><span class="lineCov">         15 :       : success_(success) {}</span></a>
 <a name="162"><span class="lineNum">     162 </span>            : </a>
 <a name="163"><span class="lineNum">     163 </span>            : #if defined(_MSC_VER) &amp;&amp; (_MSC_VER &lt; 1910 || _MSC_VER &gt;= 1920)</a>
 <a name="164"><span class="lineNum">     164 </span>            :   GTEST_DISABLE_MSC_WARNINGS_POP_()</a>
@@ -233,7 +233,7 @@
 <a name="171"><span class="lineNum">     171 </span>            :   }</a>
 <a name="172"><span class="lineNum">     172 </span>            : </a>
 <a name="173"><span class="lineNum">     173 </span>            :   // Returns true if and only if the assertion succeeded.</a>
-<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         57 :   operator bool() const { return success_; }  // NOLINT</span></a>
+<a name="174"><span class="lineNum">     174 </span><span class="lineCov">         15 :   operator bool() const { return success_; }  // NOLINT</span></a>
 <a name="175"><span class="lineNum">     175 </span>            : </a>
 <a name="176"><span class="lineNum">     176 </span>            :   // Returns the assertion's negation. Used with EXPECT/ASSERT_FALSE.</a>
 <a name="177"><span class="lineNum">     177 </span>            :   AssertionResult operator!() const;</a>
