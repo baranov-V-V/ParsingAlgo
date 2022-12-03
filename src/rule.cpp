@@ -59,98 +59,98 @@ bool ParseRulesHelper::HasCurr() {
 
 char ParseRulesHelper::NextSymbol() {
   if ((pos + 1) >= Size()) {
-    throw std::out_of_range("got to end of parse_string");
+    throw std::out_of_range("got to end of rules");
   }
   return rules_string[pos++];
 }
 
 void ParseRulesHelper::Next(int count) {
   if ((pos + count) >= Size()) {
-    throw std::out_of_range("got to end of parse_string");
+    throw std::out_of_range("got to end of rules");
   }
   pos += count;
 }
 
 char ParseRulesHelper::CurrSymbol() {
   if (pos >= Size()) {
-    throw std::out_of_range("got to end of parse_string");
+    throw std::out_of_range("got to end of rules");
   }
   return rules_string[pos];
 }
 
 Rule::Rule(Token lhs, TokenSeq rhs) : lhs_(lhs), rhs_(rhs) {}
 
-Token Rule::GetStr(ParseRulesHelper& parse_string, bool is_term) {
-  int start_pos = parse_string.pos;
-  parse_string.SkipSpaces();
+Token Rule::GetStr(ParseRulesHelper& rules, bool is_term) {
+  int start_pos = rules.pos;
+  rules.SkipSpaces();
   
   Token token("", is_term);
   
-  while (parse_string.pos < parse_string.Size() && std::isalpha(parse_string.CurrSymbol())) {
-    token.data->push_back(parse_string.CurrSymbol());
-    parse_string.NextSymbol();
+  while (rules.pos < rules.Size() && std::isalpha(rules.CurrSymbol())) {
+    token.data->push_back(rules.CurrSymbol());
+    rules.NextSymbol();
   }
 
-  parse_string.SkipSpaces();
+  rules.SkipSpaces();
   
   if (!token.is_filled()) {
-    parse_string.pos = start_pos;
+    rules.pos = start_pos;
     throw FailedParsingExeption();
   }
 
   return token;
 }
 
-Token Rule::GetNonTerm(ParseRulesHelper& parse_string) {
-  return GetStr(parse_string, false);
+Token Rule::GetNonTerm(ParseRulesHelper& rules) {
+  return GetStr(rules, false);
 }
 
-Token Rule::GetTerm(ParseRulesHelper& parse_string) {
+Token Rule::GetTerm(ParseRulesHelper& rules) {
   Token token("", true);
 
-  parse_string.SkipSpaces();
+  rules.SkipSpaces();
   
-  int start_pos = parse_string.pos;
+  int start_pos = rules.pos;
 
-  if (parse_string.HasCurr() && parse_string.CurrSymbol() == '\'') {
-    parse_string.NextSymbol();
-    token = GetStr(parse_string, true);
+  if (rules.HasCurr() && rules.CurrSymbol() == '\'') {
+    rules.NextSymbol();
+    token = GetStr(rules, true);
 
-    parse_string.SkipSpaces();
-    if (parse_string.HasCurr() && parse_string.CurrSymbol() != '\'') {
-      parse_string.pos = start_pos;
+    rules.SkipSpaces();
+    if (rules.HasCurr() && rules.CurrSymbol() != '\'') {
+      rules.pos = start_pos;
       throw FailedParsingExeption();
     }
-    parse_string.NextSymbol();
+    rules.NextSymbol();
   } else {
-    parse_string.pos = start_pos;
+    rules.pos = start_pos;
     throw FailedParsingExeption();
   }
 
   return token;
 }
 
-Token Rule::GetWord(ParseRulesHelper& parse_string) {
-  int start_pos = parse_string.pos;
+Token Rule::GetWord(ParseRulesHelper& rules) {
+  int start_pos = rules.pos;
   
   try {
-    return GetNonTerm(parse_string);
+    return GetNonTerm(rules);
   } catch(const FailedParsingExeption& e) {
     //could not get non-term then try Term
   }
   
-  parse_string.pos = start_pos;
-  return GetTerm(parse_string);
+  rules.pos = start_pos;
+  return GetTerm(rules);
 }
 
-vector<Token> Rule::GetTokenSeq(ParseRulesHelper& parse_string) {
+vector<Token> Rule::GetTokenSeq(ParseRulesHelper& rules) {
   vector<Token> seq = {};
 
-  seq.push_back(GetWord(parse_string));
+  seq.push_back(GetWord(rules));
 
   try{
     while (true) {
-      seq.push_back(GetWord(parse_string));
+      seq.push_back(GetWord(rules));
     }
   }
   catch(const FailedParsingExeption& e) {
@@ -160,61 +160,65 @@ vector<Token> Rule::GetTokenSeq(ParseRulesHelper& parse_string) {
   return seq;
 }
 
-Token Rule::GetLhs(ParseRulesHelper& parse_string) {
-  return GetNonTerm(parse_string);
+Token Rule::GetLhs(ParseRulesHelper& rules) {
+  return GetNonTerm(rules);
 }
 
-vector<TokenSeq> Rule::GetRhs(ParseRulesHelper& parse_string) {
+vector<TokenSeq> Rule::GetRhs(ParseRulesHelper& rules) {
   vector<TokenSeq> rhs = {};
 
-  rhs.push_back(GetTokenSeq(parse_string));
-  parse_string.SkipSpaces();
+  rhs.push_back(GetTokenSeq(rules));
+  rules.SkipSpaces();
 
-  while (parse_string.HasCurr() && parse_string.CurrSymbol() == '|') {
-    parse_string.NextSymbol();
-    rhs.push_back(GetTokenSeq(parse_string));
-    parse_string.SkipSpaces();
+  while (rules.HasCurr() && rules.CurrSymbol() == '|') {
+    rules.NextSymbol();
+    rhs.push_back(GetTokenSeq(rules));
+    rules.SkipSpaces();
   }
 
   return rhs;
 }
 
-void Rule::CheckDelimeter(ParseRulesHelper& parse_string) {
-  parse_string.SkipSpaces();
-  if (!parse_string.HasCurr() || parse_string.CurrSymbol() != ':') {
+void Rule::CheckDelimeter(ParseRulesHelper& rules) {
+  rules.SkipSpaces();
+  if (!rules.HasCurr() || rules.CurrSymbol() != ':') {
     throw FailedParsingExeption();
   }
-  parse_string.NextSymbol();
+  rules.NextSymbol();
 }
 
-void Rule::CheckEnding(ParseRulesHelper& parse_string) {
-  parse_string.SkipSpaces();
-  if (!parse_string.HasCurr() || parse_string.CurrSymbol() != ';') {
+void Rule::CheckEnding(ParseRulesHelper& rules) {
+  rules.SkipSpaces();
+  if (!rules.HasCurr() || rules.CurrSymbol() != ';') {
     throw FailedParsingExeption();
   }
-  if (parse_string.HasNext()) {
-    parse_string.NextSymbol();
+  if (rules.HasNext()) {
+    rules.NextSymbol();
   }
 }
 
-vector<Rule> Rule::ReadRuleLine(ParseRulesHelper& parse_string) {
-  vector<Rule> rules = {};
+vector<Rule> Rule::ReadRuleLine(ParseRulesHelper& rules) {
+  vector<Rule> rules_vec = {};
 
-  Token lhs = GetLhs(parse_string);
+  Token lhs = GetLhs(rules);
   
-  CheckDelimeter(parse_string);
+  CheckDelimeter(rules);
 
-  for (const TokenSeq& rhs: GetRhs(parse_string)) {
-    rules.push_back({lhs, rhs});
+  for (const TokenSeq& rhs: GetRhs(rules)) {
+    rules_vec.push_back({lhs, rhs});
   }
   
-  CheckEnding(parse_string);
+  CheckEnding(rules);
 
-  return rules;
+  return rules_vec;
 }
 
-const Token& Rule::GetLhs() const { return lhs_; }
-const TokenSeq& Rule::GetRhs() const { return rhs_; }
+const Token& Rule::GetLhs() const {
+  return lhs_;
+}
+const TokenSeq& Rule::GetRhs() const {
+  return rhs_;
+}
 const Token& Rule::GetRhs(int token_pos) const {
   return rhs_.at(token_pos);
 };
