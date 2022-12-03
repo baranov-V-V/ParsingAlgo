@@ -19,9 +19,13 @@ const Token& Situation::GetPointToken() const {
   return rule_.GetRhs().at(point_pos_);
 }
 
-const Token& Situation::GetLhs() const { return rule_.GetLhs(); }
+const Token& Situation::GetLhs() const {
+  return rule_.GetLhs();
+}
 
-const TokenSeq& Situation::GetRhs() const { return rule_.GetRhs(); }
+const TokenSeq& Situation::GetRhs() const {
+  return rule_.GetRhs();
+}
 
 bool Situation::IsCompleted() const {
   return point_pos_ == rule_.GetRhs().size();

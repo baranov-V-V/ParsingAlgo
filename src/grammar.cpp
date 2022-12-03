@@ -12,8 +12,6 @@ Grammar::Grammar(basic_istream<char>& is) {
   std::string str_grammar(it, end);
 
   ConstructVecRules(str_grammar);
-  AddToMap(rules_);
-  InitHelperSets();
 }
 
 Grammar::Grammar(const string& start, const string& str_grammar) : start_(start) {
@@ -28,7 +26,7 @@ Grammar::Grammar(const string& start, const vector<Rule>& rules) : start_(start)
 }
 
 void Grammar::ConstructVecRules(const string& str_grammar) {
-  ParseString parse_string(str_grammar);
+  ParseRulesHelper parse_string(str_grammar);
 
   while (parse_string.HasNext()) {
     parse_string.SkipSpaces();
@@ -57,11 +55,21 @@ void Grammar::InitHelperSets() {
     }
   }
 }
-const Grammar::RulesMap& Grammar::GetRulesMap() const { return rules_map_; }
-const vector<Rule>& Grammar::GetRulesVec() const { return rules_; };
-const set<string>& Grammar::GetTerminals() const { return terminals_; }
-const set<string>& Grammar::GetNonTerminals() const { return non_terminals_; }
-const string& Grammar::GetStart() const { return start_; };
+const Grammar::RulesMap& Grammar::GetRulesMap() const {
+  return rules_map_;
+}
+const vector<Rule>& Grammar::GetRulesVec() const {
+  return rules_;
+};
+const set<string>& Grammar::GetTerminals() const {
+  return terminals_;
+}
+const set<string>& Grammar::GetNonTerminals() const {
+  return non_terminals_;
+}
+const string& Grammar::GetStart() const {
+  return start_;
+};
 
 void Grammar::Print(std::ostream& os) const {
   for (const Rule& rule : GetRulesVec()) {
