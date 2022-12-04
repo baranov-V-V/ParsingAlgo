@@ -14,6 +14,7 @@ if(IS_LIB)
       ${AUTOMATA_INCLUDE_DIR}/rule.hpp
       ${AUTOMATA_INCLUDE_DIR}/grammar.hpp
       ${AUTOMATA_INCLUDE_DIR}/algorithms.hpp
+      ${AUTOMATA_INCLUDE_DIR}/situation.hpp
     PRIVATE
       ${AUTOMATA_SOURCE_DIR}/automata.cpp
       ${AUTOMATA_SOURCE_DIR}/automata_utils.cpp
@@ -21,6 +22,7 @@ if(IS_LIB)
       ${AUTOMATA_SOURCE_DIR}/rule.cpp
       ${AUTOMATA_SOURCE_DIR}/grammar.cpp
       ${AUTOMATA_SOURCE_DIR}/algorithms.cpp
+      ${AUTOMATA_SOURCE_DIR}/situation.cpp
   )
 
 else()
@@ -37,6 +39,8 @@ else()
       ${AUTOMATA_INCLUDE_DIR}/rule.hpp
       ${AUTOMATA_INCLUDE_DIR}/grammar.hpp
       ${AUTOMATA_INCLUDE_DIR}/algorithms.hpp
+      ${AUTOMATA_INCLUDE_DIR}/situation.hpp
+
     PRIVATE
       ${AUTOMATA_SOURCE_DIR}/automata.cpp
       ${AUTOMATA_SOURCE_DIR}/automata_utils.cpp
@@ -45,5 +49,7 @@ else()
       ${AUTOMATA_SOURCE_DIR}/grammar.cpp
       ${AUTOMATA_SOURCE_DIR}/algorithms.cpp
       ${AUTOMATA_SOURCE_DIR}/main.cpp
+      ${AUTOMATA_SOURCE_DIR}/situation.cpp
+
   )
 endif()

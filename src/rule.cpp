@@ -101,6 +101,25 @@ Token Rule::GetStr(ParseRulesHelper& rules, bool is_term) {
   return token;
 }
 
+Token Rule::GetQuotedStr(ParseRulesHelper& rules, bool is_term) {
+  int start_pos = rules.pos;
+  rules.SkipSpaces();
+  
+  Token token("", is_term);
+  
+  while (rules.HasCurr() && rules.CurrSymbol() != '\'') {
+    token.data->push_back(rules.CurrSymbol());
+    rules.NextSymbol();
+  }
+  
+  if (!token.is_filled()) {
+    rules.pos = start_pos;
+    throw FailedParsingExeption();
+  }
+
+  return token;
+}
+
 Token Rule::GetNonTerm(ParseRulesHelper& rules) {
   return GetStr(rules, false);
 }
@@ -114,7 +133,7 @@ Token Rule::GetTerm(ParseRulesHelper& rules) {
 
   if (rules.HasCurr() && rules.CurrSymbol() == '\'') {
     rules.NextSymbol();
-    token = GetStr(rules, true);
+    token = GetQuotedStr(rules, true);
 
     rules.SkipSpaces();
     if (rules.HasCurr() && rules.CurrSymbol() != '\'') {

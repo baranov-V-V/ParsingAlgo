@@ -81,6 +81,8 @@ target_sources(TestAlgorithms
     ${AUTOMATA_SOURCE_DIR}/rule.cpp
     ${AUTOMATA_SOURCE_DIR}/grammar.cpp
     ${AUTOMATA_SOURCE_DIR}/algorithms.cpp
+    ${AUTOMATA_SOURCE_DIR}/situation.cpp
+
   )
 target_link_libraries(TestAlgorithms
   PUBLIC
