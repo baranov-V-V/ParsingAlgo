@@ -11,10 +11,16 @@ if(IS_LIB)
       ${AUTOMATA_INCLUDE_DIR}/automata.hpp
       ${AUTOMATA_INCLUDE_DIR}/automata_utils.hpp
       ${AUTOMATA_INCLUDE_DIR}/transition.hpp
+      ${AUTOMATA_INCLUDE_DIR}/rule.hpp
+      ${AUTOMATA_INCLUDE_DIR}/grammar.hpp
+      ${AUTOMATA_INCLUDE_DIR}/algorithms.hpp
     PRIVATE
       ${AUTOMATA_SOURCE_DIR}/automata.cpp
       ${AUTOMATA_SOURCE_DIR}/automata_utils.cpp
       ${AUTOMATA_SOURCE_DIR}/transition.cpp
+      ${AUTOMATA_SOURCE_DIR}/rule.cpp
+      ${AUTOMATA_SOURCE_DIR}/grammar.cpp
+      ${AUTOMATA_SOURCE_DIR}/algorithms.cpp
   )
 
 else()
@@ -28,10 +34,16 @@ else()
       ${AUTOMATA_INCLUDE_DIR}/automata.hpp
       ${AUTOMATA_INCLUDE_DIR}/automata_utils.hpp
       ${AUTOMATA_INCLUDE_DIR}/transition.hpp
+      ${AUTOMATA_INCLUDE_DIR}/rule.hpp
+      ${AUTOMATA_INCLUDE_DIR}/grammar.hpp
+      ${AUTOMATA_INCLUDE_DIR}/algorithms.hpp
     PRIVATE
       ${AUTOMATA_SOURCE_DIR}/automata.cpp
       ${AUTOMATA_SOURCE_DIR}/automata_utils.cpp
       ${AUTOMATA_SOURCE_DIR}/transition.cpp
+      ${AUTOMATA_SOURCE_DIR}/rule.cpp
+      ${AUTOMATA_SOURCE_DIR}/grammar.cpp
+      ${AUTOMATA_SOURCE_DIR}/algorithms.cpp
       ${AUTOMATA_SOURCE_DIR}/main.cpp
   )
 endif()
