@@ -135,6 +135,7 @@ Token Rule::GetTerm(ParseRulesHelper& rules) {
     rules.NextSymbol();
     token = GetQuotedStr(rules, true);
 
+    rules.SkipSpaces();
     if (rules.HasCurr() && rules.CurrSymbol() != '\'') {
       rules.pos = start_pos;
       throw FailedParsingExeption();

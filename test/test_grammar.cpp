@@ -40,6 +40,4 @@ TEST(Construction, simple) {
   ASSERT_EQ(rule3.GetRhs(0).is_term, false);
   ASSERT_EQ(*rule3.GetRhs(1).data, string("C"));
   ASSERT_EQ(rule3.GetRhs(1).is_term, false);
-
-  //ASSERT_EQ(grammar.GetTerminals(), set<string>({"c"}));
 }
